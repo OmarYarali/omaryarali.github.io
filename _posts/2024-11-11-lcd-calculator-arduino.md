@@ -34,32 +34,37 @@ Arduino IDE
 
 This image shows the internal structure of a usual display screen, with various layers represented. I'll be explaining the structure of a Liquid Crystal Display layer by layer below via provided image:
 
- ### Backlight Unit (BLU):  
+ ### Backlight Unit (BLU)  
  The backlight provides the light source needed to illuminate the display. In an LCD, the backlight is typically located at the back of the display stack. Modern displays often use LEDs arranged along the edges or in an array across the back panel to achieve bright and energy-efficient illumination. 
 
-### Light Guide Plate (LGP): 
+### Light Guide Plate (LGP) 
  This plate guides the light from the backlight across the entire display area. The LGP is usually made of a clear acrylic material with micro-etchings or patterns to distribute light evenly throughout the screen.
 
-### Diffuser Layer:
+### Diffuser Layer
  Positioned directly above the light guide plate, this layer further spreads the light evenly to prevent any bright or dim spots. The diffuser layer ensures a consistent brightness across the entire viewing area of the display.
 
-### First Polarizer:
+### First Polarizer
  The first polarizer, also known as the horizontal or entrance polarizer, is a transparent film that only allows light waves vibrating in a horizontal orientation to pass through. This polarizing filter helps control the light entering the liquid crystal layer, creating the conditions necessary for the liquid crystals to modulate the light correctly.
 
-### Liquid Crystal Layer:  
+### Liquid Crystal Layer  
  The core of the LCD display, this layer consists of liquid crystal molecules sandwiched between two transparent electrodes. When voltage is applied to these electrodes, the liquid crystals align to either allow or block the passage of light. This modulation of light intensity, combined with the color filter layer, forms the images on the screen.
 
-### Second Polarizer:     
+### Second Polarizer     
  This polarizer, sometimes called the vertical or exit polarizer, is aligned perpendicular to the first polarizer. It ensures that only the light manipulated by the liquid crystal layer (in terms of its alignment) passes through, thereby controlling the light and contributing to the image's clarity and contrast.
 
-### Color Filter:  
+### Color Filter  
  Directly above the liquid crystal layer, the color filter is composed of red, green, and blue sub-pixels arranged in a grid. Each pixel on the display has these three sub-pixels, which combine in varying intensities to create the full spectrum of colors needed for the display. The color filter is essential for generating color images, as the liquid crystals themselves only control brightness.
 
-### Outer Glass or Protective Layer:  
+### Outer Glass or Protective Layer 
  This final layer is a transparent glass or plastic sheet that protects the internal components of the display. It shields the delicate layers within while providing a smooth and durable viewing surface.
 
 
-## Circuit Schematic
+## How to Connect LCD to Arduino
+
+![](assets/LCD Configuration.jpg)
+
+
+
 
 
 
