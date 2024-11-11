@@ -3,7 +3,8 @@ title: LCD Calculator Arduino
 date: 2024-11-11 00:00:00 +0300
 categories: [IoT, Arduino]
 tags: [Embedded Project, Electronics, LCD, Calculator, Serial Communication]   
-author: yarali
+author: yarali **Author:** {{ Yarali }}
+
 ---
 
 
