@@ -21,7 +21,7 @@
 #
  - type: linkedin
    icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-   url:  'https://www.linkedin.com/in/omar-yarali-347947217?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BzvfXa5d7QXOgOyw8rE8S4w%3D%3D'                  # Fill with your Linkedin homepage
+   url:  'https://www.linkedin.com/in/omar-yarali-347947217'                  # Fill with your Linkedin homepage
 #
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
