@@ -34,7 +34,7 @@ Arduino IDE
 
 This image shows the internal structure of a usual display screen, with various layers represented. I'll be explaining the structure of a Liquid Crystal Display layer by layer below via provided image:
 
- ### Backlight Unit (BLU)  
+### Backlight Unit (BLU)  
  The backlight provides the light source needed to illuminate the display. In an LCD, the backlight is typically located at the back of the display stack. Modern displays often use LEDs arranged along the edges or in an array across the back panel to achieve bright and energy-efficient illumination. 
 
 ### Light Guide Plate (LGP) 
@@ -61,7 +61,24 @@ This image shows the internal structure of a usual display screen, with various 
 
 ## How to Connect LCD to Arduino
 
-![](assets/LCD Configuration.jpg)
+![](assets/LCD Configuration.png)
+
+### Testing
+Always start with a simple test code to ensure the LCD is displaying correctly. Arduino's LiquidCrystal library includes example code for 16x2 displays, which can be helpful for initial testing.
+
+
+## Circuit Schematic
+
+![](assets/Circuit Scheme.png)
+
+### Double-check Connections
+Ensure each wire is securely connected to the breadboard and Arduino. Loose connections can cause the LCD to malfunction or display incorrect characters.
+
+### Contrast Adjustment
+
+In my circuit diagram, turning the potentiometer clockwise increases contrast, while counterclockwise decreases it. Set the potentiometer to a mid-range position before powering the circuit, then adjust as needed for readability.
+
+
 
 
 
