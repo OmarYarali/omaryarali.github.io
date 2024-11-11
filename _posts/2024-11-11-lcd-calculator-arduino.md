@@ -84,14 +84,14 @@ In my circuit diagram, turning the potentiometer clockwise increases contrast, w
 
 This Arduino program uses an LCD to display simple arithmetic operations. It prompts the user to input two numbers and an operator to perform addition, subtraction, multiplication, division, or exponentiation. Let’s go through the code step-by-step.  
 
-```C
+```c
 #include <LiquidCrystal.h>
 #include <math.h>
 ```
 
 The <LiquidCrystal.h> library manages the communication between the Arduino and the LCD display and <math.h> is used for advanced mathematical operations (like pow() for exponentiation).
 
-```C
+```c
 LiquidCrystal lcd(13, 8, 9, 10, 11, 12);
 double firstNum = 0;
 double secondNum = 0;
