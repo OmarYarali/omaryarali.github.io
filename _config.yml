@@ -56,7 +56,7 @@ webmaster_verifications:
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
- Web Analytics Settings
+# Web Analytics Settings
 analytics:
   google:
     id: # fill in your Google Analytics ID
