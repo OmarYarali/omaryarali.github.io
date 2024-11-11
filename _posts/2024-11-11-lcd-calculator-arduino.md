@@ -89,7 +89,7 @@ This Arduino program uses an LCD to display simple arithmetic operations. It pro
 #include <math.h>
 ```
 
-The <LiquidCrystal.h> library manages the communication between the Arduino and the LCD display and <math.h> is used for advanced mathematical operations (like pow() for exponentiation).
+The LiquidCrystal.h library manages the communication between the Arduino and the LCD display and math.h is used for advanced mathematical operations (like pow() for exponentiation).
 
 ```c
 LiquidCrystal lcd(13, 8, 9, 10, 11, 12);
@@ -103,6 +103,40 @@ String errorMsg = "Math Error";
 **<LiquidCrystal lcd(13, 8, 9, 10, 11, 12)>**: This initializes the LCD object and connects it to the pins of the Arduino. These pins control the LCD's communication (RS, E, D4, D5, D6, D7).  
 **<firstNum, secondNum, op, answer>**: These variables store the first and second numbers, the operator, and the answer.
 **<errorMsg>**: This stores a string used to display an error message in case of invalid operations, like division by zero.
+
+```c
+void setup() {
+ lcd.begin(16, 2);
+ Serial.begin(9600);
+ Serial.setTimeout(200);
+}
+```
+
+**<lcd.begin(16, 2)>**: initializes the LCD in a 16x2 (16 columns by 2 rows) configuration.
+**<Serial.begin(9600)>**: starts serial communication at a 9600 baud rate to receive input from the serial monitor.
+**<Serial.setTimeout(200)>**: sets a 200 ms timeout for serial communication to prevent long waits for user input.
+
+```c
+void loop() {
+lcd.setCursor(0, 0);
+lcd.print("Enter 1st number");
+lcd.setCursor(0, 1);
+
+while(!Serial.available()){
+    lcd.blink();
+}
+lcd.noBlink();
+
+firstNum = Serial.parseFloat();
+lcd.print(firstNum);
+delay(1000);
+lcd.clear();
+```
+
+**<LCD Prompt>**: The program prompts the user to enter the first number by positioning the cursor and displaying the message "Enter 1st number."
+**<Blink Function>**: While waiting for input (Serial.available()), lcd.blink() makes the LCD cursor blink, visually indicating that the Arduino is waiting for the user’s input. Once input is detected, lcd.noBlink() stops the blinking.
+**<Reading Input>**: firstNum = Serial.parseFloat(); reads the user’s input as a floating-point number, allowing decimal values.
+**<Displaying and Clearing>**: The entered number is displayed briefly before clearing the LCD for the next prompt.
 
 
 
