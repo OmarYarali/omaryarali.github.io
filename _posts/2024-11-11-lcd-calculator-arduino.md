@@ -3,7 +3,7 @@ title: LCD Calculator Arduino
 date: 2024-11-11 00:00:00 +0300
 categories: [IoT, Arduino]
 tags: [Embedded Project, Electronics]   
-author: Yarali
+author: yarali
 ---
 
 
@@ -21,6 +21,11 @@ This project demonstrates how to build a basic calculator using an Arduino and a
 
 Arduino board  
 LCD display (16x2)  
-LiquidCrystal library (included by default in Arduino IDE)  
+LiquidCrystal library (included by default in Arduino IDE) 
+10k "A" type Potentiometer
+Arduino IDE
+
+
+
  
 
