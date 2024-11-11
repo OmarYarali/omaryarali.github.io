@@ -29,6 +29,10 @@ Arduino IDE
 
 ## How Liquid Crystal Display(LCD) work?
 
+![](assets/LCD Internal Structure.jpg)
+
+
+
 
 
 
