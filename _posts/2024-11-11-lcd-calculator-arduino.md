@@ -32,6 +32,25 @@ Arduino IDE
 ![](assets/LCD Internal Structure.jpg)
 
 
+This image shows the internal structure of a usual display screen, with various layers represented. I'll be explaining the structure of a Liquid Crystal Display layer by layer below via provided image:
+
+ ## Backlight Unit (BLU):
+ The backlight provides the light source needed to illuminate the display. In an LCD, the backlight is typically located at the back of the display stack. Modern displays often use LEDs arranged along the edges or in an array across the back panel to achieve bright and energy-efficient illumination. 
+
+## Light Guide Plate (LGP): 
+ This plate guides the light from the backlight across the entire display area. The LGP is usually made of a clear acrylic material with micro-etchings or patterns to distribute light evenly throughout the screen.
+
+## Diffuser Layer:
+ Positioned directly above the light guide plate, this layer further spreads the light evenly to prevent any bright or dim spots. The diffuser layer ensures a consistent brightness across the entire viewing area of the display.
+
+## First Polarizer:
+ The first polarizer, also known as the horizontal or entrance polarizer, is a transparent film that only allows light waves vibrating in a horizontal orientation to pass through. This polarizing filter helps control the light entering the liquid crystal layer, creating the conditions necessary for the liquid crystals to modulate the light correctly.
+
+## Liquid Crystal Layer:
+ The core of the LCD display, this layer consists of liquid crystal molecules sandwiched between two transparent electrodes. When voltage is applied to these electrodes, the liquid crystals align to either allow or block the passage of light. This modulation of light intensity, combined with the color filter layer, forms the images on the screen.
+
+## 
+
 
 
 
