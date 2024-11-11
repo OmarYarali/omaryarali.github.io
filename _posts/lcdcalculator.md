@@ -19,8 +19,8 @@ This project demonstrates how to build a basic calculator using an Arduino and a
 
 ## Requirements
 
-Arduino board
-LCD display (16x2)
-LiquidCrystal library (included by default in Arduino IDE)
-Serial Monitor
+Arduino board  
+LCD display (16x2)  
+LiquidCrystal library (included by default in Arduino IDE)  
+ 
 
