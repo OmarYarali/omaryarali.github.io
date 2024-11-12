@@ -173,14 +173,61 @@ delay(1000);
 lcd.clear();
 ```
 
-**Prompt for Operator**: The program prompts the user to enter an arithmetic operator.
-**Operator Input: op** = Serial.read(); reads a single character (the operator) from the serial monitor.
-**Buffer Flush**: Serial.flush(); clears the buffer to prevent any leftover data from affecting the next input.
+**Prompt for Operator**: The program prompts the user to enter an arithmetic operator.  
+**Operator Input: op** = Serial.read(); reads a single character (the operator) from the serial monitor.  
+**Buffer Flush**: Serial.flush(); clears the buffer to prevent any leftover data from affecting the next input.  
 
 ```c
+//Performing the Calculations
+if (op == '+')
+    answer = firstNum + secondNum;
+else if (op == '-')
+    answer = firstNum - secondNum;
+else if (op == '*')
+    answer = firstNum * secondNum;
+else if (op == '/')
+    if (secondNum == 0) {
+        lcd.clear();
+        lcd.print(errorMsg);
+        delay(2000);
+        return;  // Restart the loop if division by zero occurs
+    } else
+        answer = firstNum / secondNum;
+else if (op == '^')
+    answer = pow(firstNum, secondNum);
+else {
+    lcd.clear();
+    lcd.print("Invalid Operator");
+    delay(2000);
+    return;
+}
+```
 
+**Operator Check**: This block of code uses if statements to determine which operation to perform based on the operator entered by the user.  
+**Division by Zero**: If the operator is / and the secondNum is 0, an error message is displayed for 2 seconds, and the program restarts to avoid a crash.  
+**Invalid Operator**: If an invalid operator is entered, the program displays an "Invalid Operator" message for 2 seconds before restarting the loop.  
 
+```c
+lcd.print(firstNum);
+lcd.print(op); 
+lcd.print(secondNum);
 
+lcd.setCursor(0, 1);
+lcd.print("Answer = ");
+lcd.print(answer);
+delay(3000);
+lcd.clear();
+```
+
+**Format the Display**: This section shows the expression (e.g., 5 * 3) on the first line of the LCD and the result (Answer = 15) on the second line.  
+**Delay and Clear**: The result remains on the screen for 3 seconds, after which the LCD is cleared, and the program restarts.  
+
+### Final Overview of Program Flow    
+
+**Prompt User for Input**: The LCD displays prompts for the first number, second number, and operator, using blinking to indicate readiness for input.  
+**Perform Calculation**: Based on the entered operator, the program performs the calculation.  
+**Error Handling**: If the user enters an invalid operator or attempts to divide by zero, an error message is displayed.  
+**Display Result**: The LCD shows the complete expression and the result for 3 seconds before resetting.  
 
 
 
