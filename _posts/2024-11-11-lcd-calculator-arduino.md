@@ -23,9 +23,9 @@ This project demonstrates how to build a basic calculator using an Arduino and a
 
 Arduino board  
 LCD display (16x2)  
-LiquidCrystal library (included by default in Arduino IDE) 
-10k "A" type Potentiometer
-Arduino IDE
+LiquidCrystal library (included by default in Arduino IDE)     
+10k "A" type Potentiometer  
+Arduino IDE  
 
 ## How Liquid Crystal Display(LCD) work?
 
