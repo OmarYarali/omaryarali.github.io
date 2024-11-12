@@ -234,7 +234,7 @@ lcd.clear();
 
 This project demonstrates the construction and functionality of a simple calculator using an Arduino and an LCD display. By integrating the Arduino with a 16x2 LCD screen, we have created a user-friendly interface that guides users through arithmetic operations step-by-step, providing immediate feedback on the display. The project showcases several essential concepts in electronics and programming, including interfacing with serial communication, handling various data types, and implementing error handling for user inputs.  
 
-Thank you for following along on this journey to build an Arduino calculator. I hope you found it both informative and inspiring! If you'd like to see this project in action, follow me on [Instagram](https://www.instagram.com/theiotenthusiast/), where I’ll be posting video demos of the calculator in real life, from entering numbers to displaying results on the LCD screen. Follow my [Instagram](https://www.instagram.com/theiotenthusiast/) page to stay connected, and I’d love to hear your thoughts or see your own versions of this project!
+Thank you for following along on this journey to build an Arduino calculator. I hope you found it both informative and inspiring! If you'd like to see this project in action, follow me on [Instagram](https://www.instagram.com/theiotenthusiast/), where I’ll be posting video demos of the calculator in real life, from entering numbers to displaying results on the LCD screen. I’d love to hear your thoughts or see your own versions of this project!
 
 **See you in the next project—until then, happy building!**
 
