@@ -230,6 +230,14 @@ lcd.clear();
 **Display Result**: The LCD shows the complete expression and the result for 3 seconds before resetting.  
 
 
+## Conclusion  
+
+This project demonstrates the construction and functionality of a simple calculator using an Arduino and an LCD display. By integrating the Arduino with a 16x2 LCD screen, we have created a user-friendly interface that guides users through arithmetic operations step-by-step, providing immediate feedback on the display. The project showcases several essential concepts in electronics and programming, including interfacing with serial communication, handling various data types, and implementing error handling for user inputs.  
+
+Thank you for following along on this journey to build an Arduino calculator. Hope you found it helpful and inspiring—see you in the next projects!
+
+
+
 
 
 
