@@ -1,8 +1,8 @@
 ---
-title: LCD Calculator Arduino
+title: Portable Humidity and Temperature Sensor
 date: 2024-11-11 00:00:00 +0300
 categories: [IoT, Arduino]
-tags: [Embedded Project, Electronics, LCD, Calculator, Serial Communication]   
+tags: [Embedded Project, Electronics, LCD, DHT, Power Supply, Battery Powered, Portable, Real-Time Data Display, Error Indication]   
 author: yarali 
 published: true
 
