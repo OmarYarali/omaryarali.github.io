@@ -117,6 +117,7 @@ void setup() {
 **Serial.setTimeout(200)**: sets a 200 ms timeout for serial communication to prevent long waits for user input.  
 
 ```c
+// Handling First Input
 void loop() {
 lcd.setCursor(0, 0);
 lcd.print("Enter 1st number");
@@ -137,6 +138,50 @@ lcd.clear();
 **Blink Function**: While waiting for input (Serial.available()), lcd.blink() makes the LCD cursor blink, visually indicating that the Arduino is waiting for the user’s input. Once input is detected, lcd.noBlink() stops the blinking.  
 **Reading Input**: firstNum = Serial.parseFloat(); reads the user’s input as a floating-point number, allowing decimal values.  
 **Displaying and Clearing**: The entered number is displayed briefly before clearing the LCD for the next prompt.  
+
+```c
+// Handling Second Input
+lcd.print("Enter 2nd number");
+lcd.setCursor(0, 1);
+
+while (!Serial.available()) {
+    lcd.blink();  // Blink cursor while waiting for input
+}
+lcd.noBlink();
+
+secondNum = Serial.parseFloat();
+lcd.print(secondNum);
+delay(1000);
+lcd.clear();
+```
+This section follows the same steps as for the first number, prompting the user to enter the second number. The blink function is used again to indicate waiting for input.
+
+```c
+// Entering the Operator
+lcd.print("Enter operator");
+lcd.setCursor(0, 1);
+
+while (!Serial.available()) {
+    lcd.blink();  // Blink cursor while waiting for input
+}
+lcd.noBlink();
+
+op = Serial.read();
+Serial.flush();  // Clears the serial buffer after reading
+lcd.print(op);
+delay(1000);
+lcd.clear();
+```
+
+**Prompt for Operator**: The program prompts the user to enter an arithmetic operator.
+**Operator Input: op** = Serial.read(); reads a single character (the operator) from the serial monitor.
+**Buffer Flush**: Serial.flush(); clears the buffer to prevent any leftover data from affecting the next input.
+
+```c
+
+
+
+
 
 
 
