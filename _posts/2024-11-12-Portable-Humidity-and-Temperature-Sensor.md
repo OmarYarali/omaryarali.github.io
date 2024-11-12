@@ -46,3 +46,15 @@ Red LED for error indication
 330 Ohm Resistor (for LED)  
 Breadboard and jumper wires  
 9V Battery with breadboard power supply  
+
+
+
+## How DHT11 Sensor work?
+
+![](assets/assets/DHT11 Sensor Internal Structure.jpg)
+
+This image shows the internal structure and working principle of the DHT11 sensor, which is used for measuring temperature and humidity. The image provides details on the two main components of the DHT11 sensor: the temperature sensing component and the humidity sensing component.
+
+## Temperature Sensing Component
+
+
