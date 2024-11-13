@@ -46,6 +46,16 @@ Red LED for error indication
 330 Ohm Resistor (for LED)  
 Breadboard and jumper wires  
 9V Battery with breadboard power supply  
+Download DHT and LiquidCrystal Libraries
+
+
+## How to Download Libraries
+
+You can easily access and install most libraries directly from the Arduino IDE. Simply open the Library Manager by going to Sketch > Include Library > Manage Libraries or use the shortcut Ctrl + Shift + I (Windows) or Cmd + Shift + I (Mac). In the Library Manager, you can search for the library you need, such as DHT(by Adafruit), and then click Install next to it. Libraries which are already built into the IDE, like LiquidCrystal, are ready to use without installation—just include them in your code with:  
+ ```c
+ #include <LiquidCrystal.h>  
+```
+ This makes it quick and simple to add functionality to your projects.  
 
 
 
