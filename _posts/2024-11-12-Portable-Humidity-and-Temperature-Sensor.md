@@ -57,7 +57,7 @@ You can easily access and install most libraries directly from the Arduino IDE. 
 ```
  This makes it quick and simple to add functionality to your projects.  
 
-
+  
 
 ## How DHT11 Sensor work?
 
@@ -76,7 +76,35 @@ For temperature sensing part, DHT11 uses a thermistor to measure temperature. In
  Then the DHT sensor's internal microcontroller reads the change in resistance and converts it into a temperature value using pre-defined calibration data and equations specific to the thermistor’s material properties.  
 
 
-### Humidity Sensing Component
+### Humidity Sensing Component  
+
+The DHT sensor has a capacitive humidity sensor that consists of two electrodes with a moisture-absorbing substrate (usually a polymer) between them.  Capacitance is a property that indicates how much electric charge a capacitor can store for a given electric potential. It depends on the area of the plates, the distance between them, and the dielectric constant (a material property related to its ability to store electric energy) of the medium between the plates.  
+
+ This polymer can absorb water vapor from the surrounding air. When the moisture level in the air (humidity) changes, water molecules (which are polar, meaning they have a partial electric charge) are absorbed by the polymer. Water has a high dielectric constant compared to air, so when it is absorbed into the polymer, the dielectric constant between the capacitor plates increases. The increased dielectric constant causes the capacitance to increase. By measuring this change, the DHT sensor can infer the relative humidity of the surrounding air.
+
+### Bonus Information: The Role of Polarity in Water Molecules  
+
+ *Being polar* means that the molecule has a partial electric charge on different ends due to the distribution of electrons. Water molecules consist of one oxygen atom and two hydrogen atoms. Oxygen is more electronegative than hydrogen, meaning it pulls electrons toward itself. This creates a negative charge near the oxygen atom and a positive charge near the hydrogen atoms, making the molecule have a dipole — a positive side and a negative side.
+
+ This polarity is what allows water to interact strongly with other polar substances and affects the way it behaves in various environments, including its ability to increase the dielectric constant in materials like polymers when absorbed. The increased dielectric constant helps enhance the capacitor's ability to store electrical charge.  
+
+
+
+## Data Communication Protocol of the DHT11 Sensor
+
+Now that we've explored the internal structure of the DHT11, let's delve into how the sensor communicates with external devices, specifically through its data transmission protocol. After measuring capacitance and resistance, the sensor’s microcontroller (integrated circuit or IC) uses these analog values to calculate temperature and humidity digitally. The DHT11 uses a unique single-wire communication protocol, which allows it to send temperature and humidity data over a single digital pin. 
+
+### Single-Wire  Communication Protocol Explained
+
+The DHT11 sensor communicates using a single-wire protocol, where voltage levels and timing define logic HIGH (1) and logic LOW (0) states. The communication process consists of three main steps: first, the microcontroller sends a request signal to the DHT11. Next, the sensor responds with a response signal. Finally, it transmits 40 bits of data containing temperature and humidity readings.
+
+Images are taken from ElectronicWings.  
+
+![](assets/3_Start_Pulse.jpg) 
+
+
+
+  
 
 
 
