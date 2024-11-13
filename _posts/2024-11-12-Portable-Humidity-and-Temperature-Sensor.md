@@ -65,6 +65,19 @@ You can easily access and install most libraries directly from the Arduino IDE. 
 
 This image shows the internal structure and working principle of the DHT11 sensor, which is used for measuring temperature and humidity. The image provides details on the two main components of the DHT11 sensor: the temperature sensing component and the humidity sensing component.
 
-## Temperature Sensing Component
+### Temperature Sensing Component    
+
+For temperature sensing part, DHT11 uses a thermistor to measure temperature. In a thermistor, electrical resistance changes with temperature due to increased thermal energy affecting the motion of charge carriers (like electrons). At higher temperatures, more charge carriers become available to move, resulting in lower resistance. 
+
+ Thermistors are usually made of semiconductor materials. In semiconductors, the number of charge carriers increases with temperature as more electrons gain enough energy to jump into the conduction band from the valance band. This causes the thermistor’s resistance to decrease.     
+
+ They are small, durable and sensitive at low temperature. Thermistors have moderate temperature range (up to 150°C) and low-to-moderate cost (depending on accuracy). DHT11 is a low-cost device and the sensor reading can be up to 2 seconds. It is less accurate compared to more advanced sensors like the DHT22 or others that can measure over a wider temperature range with higher precision. It measures temperature with a Negative Temperature Coefficient (NTC) thermistor in which resistance is negatively correlated with temperature. The graph in the image shows the relationship between temperature and resistance in an NTC thermistor. As the temperature rises, the resistance decreases, allowing the sensor to measure changes in temperature.  
+
+ Then the DHT sensor's internal microcontroller reads the change in resistance and converts it into a temperature value using pre-defined calibration data and equations specific to the thermistor’s material properties.  
+
+
+### Humidity Sensing Component
+
+
 
 
