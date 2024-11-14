@@ -226,8 +226,8 @@ This line creates an lcd object for interfacing with the 16x2 LCD screen. The nu
 DHT dht(DHTPIN, DHTTYPE);
 ```
 
-DHTTYPE: Specifies the sensor model, DHT11 in this case.  
-DHTPIN: Defines the Arduino pin connected to the DHT11 data pin.  
+**DHTTYPE**: Specifies the sensor model, DHT11 in this case.  
+**DHTPIN**: Defines the Arduino pin connected to the DHT11 data pin.  
 Also, we initialize the DHT object with the DHT pin and sensor type.  
 
 ```c
@@ -242,8 +242,114 @@ float temperature = 0;
 float lastHumidity = 0;
 float lastTemperature = 0;
 int errorFlag = 0;
+```  
+  
+**humidity and temperature**: The current readings from the DHT11 sensor.
+**lastHumidity and lastTemperature**: The previous readings, allow us to update the LCD only when there is a change in values.
+**errorFlag**: A flag variable used to indicate if there is a sensor error, turning on the LED.  
+
+```c
+void displayReadings(float temp, float hum) {
+   lcd.setCursor(0, 0);
+   lcd.print("Temp: ");
+   lcd.print(temp);
+   lcd.print(" C");
+   lcd.print((char)223);
+
+   lcd.setCursor(0, 1);
+   lcd.print("Humidity: ");
+   lcd.print((int)hum);
+   lcd.print("%");
+}
+```  
+
+**displayReadings**: Function that displays temperature and humidity values on the LCD screen.
+**lcd.setCursor**: Positions the cursor to control where the text appears.
+-0, 0 represents the first row.
+-0, 1 represents the second row.
+**lcd.print**: Outputs measured values to the LCD.
+**(char)223**: Prints the degree symbol (°) next to the temperature(223 is the ASCII value for the degree symbol).  
+
+```c
+void setup() {
+  lcd.begin(16, 2);
+  Serial.begin(9600);
+
+  dht.begin();
+  delay(500);
+
+  pinMode(LED_PIN, OUTPUT);
+}
+```  
+
+**lcd.begin(16, 2)**: Initializes the 16x2 LCD display.
+**Serial.begin(9600)**: Starts serial communication for debugging or monitoring values.
+**dht.begin()**: Initializes the DHT11 sensor.
+**delay(500)**: Adds a brief delay to stabilize the sensor at startup.
+**pinMode(LED_PIN, OUTPUT)**: Configures the LED pin as an output.  
+
+```c
+void loop() {
+  humidity = dht.readHumidity();
+  temperature = dht.readTemperature();
+```  
+
+**humidity and temperature**: Capture current sensor readings for humidity and temperature.  
+ To display temperature in *Fahrenheit*, add "true" argument inside the read function (dht.readTemperature(true)).  
+
+```c
+  if (isnan(humidity) || isnan(temperature)) {
+    if (errorFlag == 0) {
+      lcd.clear();
+      lcd.print("Failed to Read!");
+      
+      digitalWrite(LED_PIN, HIGH);
+      errorFlag = 1;
+    }
+    return;
+  }
+```  
+
+**isnan**: Checks if the readings are "Not a Number"(NaN), which indicates a sensor error. When the DHT sensor fails to provide a valid temperature or humidity reading, the dht.readHumidity() or dht.readTemperature() functions will return NaN.    
+If the sensor fails, lcd.clear clears the LCD, displaying “Failed to Read!”.
+**digitalWrite(LED_PIN, HIGH)**: Turns on the LED to indicate the error.
+**errorFlag** = 1: Sets the error flag to 1, avoiding repeated attempts to read when an error is detected.  
+
+```c
+  if (errorFlag) {
+    lcd.clear();
+    digitalWrite(LED_PIN, LOW);
+    displayReadings(temperature, humidity);
+    errorFlag = 0;
+  }
+```  
+
+If the sensor starts working after an error, this code clears the error message, turns off the LED, and resets errorFlag to 0.  
+
+```c
+  if ((temperature != lastTemperature) || (humidity != lastHumidity)) {
+    displayReadings(temperature, humidity);
+  }
+  lastTemperature = temperature;
+  lastHumidity = humidity;
+}
 ```
 
+**temperature != lastTemperature and humidity != lastHumidity**: Checks if there’s any change in the readings.
+**displayReadings**: Updates the display only if there’s a change.
+**lastTemperature and lastHumidity**: Update the last recorded values for comparison in the next loop.  
+
+
+## Project Overview  
+
+This Arduino program creates a portable temperature and humidity monitor using a DHT11 sensor, a 16x2 LCD screen, and an error indication LED. It continuously reads temperature and humidity values from the DHT11 sensor, displaying the current temperature (in Celsius or Fahrenheit) and humidity percentage on the LCD whenever there’s a change. If the sensor fails to provide valid readings, the program triggers an error response: it displays “Failed to Read!” on the LCD and turns on the LED to indicate a problem. Once the sensor resumes normal operation, the program clears the error and continues displaying updated values, providing real-time monitoring with automatic error detection and recovery.  
+
+
+## Conclusion
+
+Thank you all for following along on this journey to build a portable temperature and humidity monitor with Arduino. I hope you found the project inspirational and helpful! If you’d like to see this project in action, follow me on [Instagram](https://www.instagram.com/theiotenthusiast/), where I’ll be posting video demos of the device in use, from reading sensor data to displaying it on the LCD screen. I’d love to hear your feedback and see your versions of this project!
+
+See you in the next build——until then, happy coding and creating!
   
 
 
