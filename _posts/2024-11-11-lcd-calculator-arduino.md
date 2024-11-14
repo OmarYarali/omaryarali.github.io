@@ -222,15 +222,12 @@ lcd.clear();
 **Format the Display**: This section shows the expression (e.g., 5 * 3) on the first line of the LCD and the result (Answer = 15) on the second line.  
 **Delay and Clear**: The result remains on the screen for 3 seconds, after which the LCD is cleared, and the program restarts.  
 
-### Final Overview of Program Flow    
+### Final Overview of Program Flow      
 
-**Prompt User for Input**: The LCD displays prompts for the first number, second number, and operator, using blinking to indicate readiness for input.  
-**Perform Calculation**: Based on the entered operator, the program performs the calculation.  
-**Error Handling**: If the user enters an invalid operator or attempts to divide by zero, an error message is displayed.  
-**Display Result**: The LCD shows the complete expression and the result for 3 seconds before resetting.  
+The program prompts the user on the LCD to enter the first number, second number, and operator, with a blinking cursor indicating that the system is ready for input. Once the operator is entered, the program performs the calculation according to the selected operator. If the user enters an invalid operator or attempts to divide by zero, an error message is displayed on the LCD. Finally, the LCD shows the full expression along with the result, holding it for 3 seconds before resetting and readying for a new input.  
 
 
-## Conclusion  
+## Conclusion    
 
 This project demonstrates the construction and functionality of a simple calculator using an Arduino and an LCD display. By integrating the Arduino with a 16x2 LCD screen, we have created a user-friendly interface that guides users through arithmetic operations step-by-step, providing immediate feedback on the display. The project showcases several essential concepts in electronics and programming, including interfacing with serial communication, handling various data types, and implementing error handling for user inputs.  
 
