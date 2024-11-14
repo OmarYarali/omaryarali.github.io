@@ -139,7 +139,7 @@ After sending the response pulse, the DHT11 sensor transmits a data frame contai
 **Fourth Segment (8 bits)**  
  Like the humidity fractional part, the DHT11 does not provide a decimal part for temperature, so this segment will also be zero, as it does not measure or provide fractional temperature values.
 
- **Heads Up**
+ **Heads Up**  
  Some libraries for the DHT11 sensor include software-based interpolation that estimates decimal values to make readings appear smoother. These libraries may add a decimal for temperature to reduce rounding errors or provide slightly more precise results, even if the sensor itself only provides integer values.  
 
 **Fifth Segment (8 bits)**  
@@ -148,11 +148,11 @@ After sending the response pulse, the DHT11 sensor transmits a data frame contai
 *For Instance*  
 Suppose the data frame received from the DHT11 is as follows (in binary):
 
-Humidity Integer: 00110111 (which equals 55 in decimal)
-Humidity Decimal: 00000000 (always 0 for the DHT11)
-Temperature Integer: 00010110 (which equals 22 in decimal)
-Temperature Decimal: 00000000 (always 0 for the DHT11)
-Checksum: 01001101 (which equals 77 in decimal)
+Humidity Integer: 00110111 (which equals 55 in decimal)  
+Humidity Decimal: 00000000 (always 0 for the DHT11)  
+Temperature Integer: 00010110 (which equals 22 in decimal)  
+Temperature Decimal: 00000000 (always 0 for the DHT11)  
+Checksum: 01001101 (which equals 77 in decimal)  
 
 For verifying the checksum, the microcontroller add four segments' value  in binary and then compare it with the checksum byte. If they match, the data is correct, but if they don’t, there is an error.  
 
@@ -160,7 +160,38 @@ For verifying the checksum, the microcontroller add four segments' value  in bin
 
 ![](assets/6_End_Of_Frame.png)  
 
-Once the DHT11 sensor has transmitted the data (temperature and humidity values), it enters a low-power consumption mode.  During this time, the sensor is idle and does not transmit any further data until the next start pulse is sent by the microcontroller. 
+Once the DHT11 sensor has transmitted the data (temperature and humidity values), it enters a low-power consumption mode.  During this time, the sensor is idle and does not transmit any further data until the next start pulse is sent by the microcontroller.  
+
+
+## Connecting Sensors to Arduino
+
+### Wiring LCD  
+
+If you're unsure how to connect LCD display to Arduino, you can check my [LCD Calculator Arduino Project](https://omaryarali.github.io/posts/lcd-calculator-arduino/) for further details.  
+
+
+### Wiring DHT11 Sensor  
+
+![](assets/Wiring DHT11.jpg)   
+
+As you can see from the provided image, for a 3-pin DHT11 module, the pins are typically labeled VCC (+), Signal (S), and Ground (-). The 4-pin version has pins labeled VCC (+), Signal, Not used, and Ground (-).
+
+### Difference between a DHT11 module and (non-module) DHT11  
+
+**DHT11 Module**    
+ A DHT11 module usually has a small circuit board with a built-in 10k-ohm pull-up resistor connected to the data pin. This resistor stabilizes data communication with the microcontroller (like an Arduino), making it easier to connect directly without extra components.
+
+**DHT11 Non-module**  
+The normal version is just the DHT11 sensor component itself, without any additional circuitry. This version does not include a pull-up resistor, so you will need to add one externally (typically a 10k-ohm resistor between the VCC and Signal pins) to ensure stable communication (Check circuit schematic).  
+
+Connect the VCC pin of the DHT11 to the 5V pin on the Arduino. This provides the necessary power for the sensor. Then you can connect the Signal pin on the DHT11 to any digital pin on the Arduino. This is where data will be transmitted from the sensor to the Arduino.    
+
+Leave the *Not used* pin on the 4-pin version unconnected. This pin has no function and is not needed for operation.  
+
+Last step is connecting the Ground pin of the DHT11 to the GND pin on the Arduino to complete the circuit. After completing these connections, your DHT11 sensor will be ready to communicate with the Arduino.
+
+
+
 
 
 
