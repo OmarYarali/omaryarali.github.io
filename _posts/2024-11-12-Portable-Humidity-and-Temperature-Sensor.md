@@ -204,12 +204,47 @@ Moreover, in this circuit, a regulated 5V breadboard power supply is used as the
 
 ## Programming the DHT11 Sensor and LCD
 
-After setting up the hardware and connecting the DHT11 sensor, LCD display, and other components to your Arduino, it’s time to write the code that will bring your project to life. Let’s get started with the coding process!
+After setting up the hardware and connecting the DHT11 sensor, LCD display, and other components to your Arduino, it’s time to write the code that will bring your project to life. We are lucky that, the DHT.h library simplifies the complex processes involved in communicating with the DHT11 sensor, handling tasks like signal timing and data conversion. This allows us to focus on implementing the main functionality of our project without needing to manage these low-level details manually. Now, let’s get started with the coding process!
 
 ```c
 #include <LiquidCrystal.h>
 #include <DHT.h>
 ```  
+
+LiquidCrystal: Manages communication between the Arduino and the LCD display.  
+DHT: Library for reading data from DHT temperature and humidity sensors.  
+
+```c
+LiquidCrystal lcd(4, 5, 6, 7, 8, 9);
+```  
+  
+This line creates an lcd object for interfacing with the 16x2 LCD screen. The numbers in parentheses represent the Arduino pins connected to the LCD's RS, E, D4, D5, D6, and D7 pins, respectively.  
+
+```c
+#define DHTTYPE DHT11
+#define DHTPIN 11
+DHT dht(DHTPIN, DHTTYPE);
+```
+
+DHTTYPE: Specifies the sensor model, DHT11 in this case.  
+DHTPIN: Defines the Arduino pin connected to the DHT11 data pin.  
+Also, we initialize the DHT object with the DHT pin and sensor type.  
+
+```c
+#define LED_PIN 13
+```  
+
+This defines LED_PIN as the pin number for the error indicator LED, which will turn on if the DHT11 sensor reading fails.  
+
+```c
+float humidity = 0;
+float temperature = 0;
+float lastHumidity = 0;
+float lastTemperature = 0;
+int errorFlag = 0;
+```
+
+  
 
 
 
