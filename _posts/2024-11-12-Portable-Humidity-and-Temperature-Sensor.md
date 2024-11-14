@@ -40,7 +40,7 @@ Powered by a 9V battery connected through a breadboard power supply module, maki
 Arduino Nano (for better portability)     
 DHT11 Temperature and Humidity Sensor  
 16x2 LCD Display  
-Red LED for error indication  
+Red LED for visual feedback  
 10k Potentiometer for LCD contrast adjustment  
 10k Resistor (for DHT11)  
 330 Ohm Resistor (for LED)  
@@ -189,6 +189,36 @@ Connect the VCC pin of the DHT11 to the 5V pin on the Arduino. This provides the
 Leave the *Not used* pin on the 4-pin version unconnected. This pin has no function and is not needed for operation.  
 
 Last step is connecting the Ground pin of the DHT11 to the GND pin on the Arduino to complete the circuit. After completing these connections, your DHT11 sensor will be ready to communicate with the Arduino.
+
+
+## Circuit Diagram
+
+![](assets/Portable_Sensor_Circuit.png)  
+
+**Additional Notes**
+
+Place a 10k-ohm resistor between the Signal and VCC pins to ensure stable data transmission for DHT11. Also when working with an LED, don't forget to place a 330-ohm resistor in series with the LED to limit the current and prevent damaging the LED.  
+
+Moreover, in this circuit, a regulated 5V breadboard power supply is used as the primary power source. This type of power supply has built-in voltage regulation, that means it converts input voltage (from a 9V battery in this project) down to a stable 5V output. This regulated 5V output can be connected directly to the Arduino’s 5V pin, bypassing the need for additional voltage regulation on the Arduino itself.
+
+
+## Programming the DHT11 Sensor and LCD
+
+After setting up the hardware and connecting the DHT11 sensor, LCD display, and other components to your Arduino, it’s time to write the code that will bring your project to life. Let’s get started with the coding process!
+
+```c
+#include <LiquidCrystal.h>
+#include <DHT.h>
+```  
+
+
+
+
+
+
+ 
+
+  
 
 
 
