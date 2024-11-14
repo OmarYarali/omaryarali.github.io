@@ -100,7 +100,37 @@ The DHT11 sensor communicates using a single-wire protocol, where voltage levels
 
 Images are taken from ElectronicWings.  
 
-![](assets/3_Start_Pulse.jpg) 
+#### Request Signal
+
+![](assets/3_Start_Pulse.jpg)   
+
+To initiate communication with the DHT11 temperature and humidity sensor, a start signal (or start pulse) needs to be sent from the microcontroller to the DHT11. This signal is essential for synchronizing the sensor with the microcontroller, allowing it to begin sending data.  
+
+First, the microcontroller pulls the data line connected to the DHT11 sensor down to a LOW state (0V). This LOW signal should be held for at least 18 milliseconds. This extended LOW signal acts as a prompt that prepares the DHT11 to start the data transfer.
+
+After maintaining the LOW state for at least 18 milliseconds, the microcontroller releases the data line, allowing it to return to a HIGH state (the line automatically returns to a HIGH state). This transition from LOW to HIGH signals to the DHT11 that the request signal is complete. 
+
+
+#### Response Signal   
+
+![](assets/4_Response.jpg)   
+
+After receiving the request signal from the microcontroller, the DHT11 sensor responds with a confirmation signal called the "response pulse." This response pulse lets the microcontroller know that the DHT11 has recognized the start(request) pulse and is ready to begin transmitting temperature and humidity data.    
+
+Once the DHT11 receives the start pulse, it takes control of the data line by pulling it LOW for approximately 54 microseconds. This initial LOW period is the sensor’s way of acknowledging the start pulse from the microcontroller. After holding the data line LOW for 54 microseconds, the DHT11 then switches the data line to a HIGH state for around 80 microseconds. This HIGH signal completes the response pulse and indicates that the sensor is now ready to transmit its data.
+
+#### Data Transmission  
+
+![](assets/Output_Representation.png)  
+
+
+ 
+
+
+
+
+
+
 
 
 
