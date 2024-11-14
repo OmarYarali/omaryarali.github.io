@@ -123,6 +123,29 @@ Once the DHT11 receives the start pulse, it takes control of the data line by pu
 
 ![](assets/Output_Representation.png)  
 
+After sending the response pulse, the DHT11 sensor transmits a data frame containing the temperature, humidity, and a checksum value to ensure data integrity.  
+
+#### Structure of the Data Frame
+
+**First Segment (8 bits)**  
+ This byte holds the integer part of the humidity value, in percentage (%). The DHT11 measures relative humidity, which indicates the amount of moisture in the air relative to the maximum amount the air can hold at that temperature. For example, if this value is 55, it means the relative humidity is 55%.
+
+**Second Segment (8 bits)**
+ This byte theoretically would contain the decimal part (or fractional part) of the humidity value. However, it’s important to note that the DHT11 sensor does not measure or provide any fractional humidity values. This means the second byte will always be zero for the DHT11, as it cannot provide humidity with decimal precision.
+
+**Third Segment (8 bits)**    
+ This byte contains the integer part of the temperature value in Celsius. If this segment holds the value 23, for example, then the temperature is 23°C. 
+
+**Fourth Segment (8 bits)**  
+ Like the humidity fractional part, the DHT11 does not provide a decimal part for temperature, so this segment will also be zero, as it does not measure or provide fractional temperature values.
+
+ Note
+
+    
+
+  
+
+
 
  
 
