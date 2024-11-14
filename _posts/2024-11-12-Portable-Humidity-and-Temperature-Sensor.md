@@ -139,7 +139,32 @@ After sending the response pulse, the DHT11 sensor transmits a data frame contai
 **Fourth Segment (8 bits)**  
  Like the humidity fractional part, the DHT11 does not provide a decimal part for temperature, so this segment will also be zero, as it does not measure or provide fractional temperature values.
 
- Note
+ **Heads Up**
+ Some libraries for the DHT11 sensor include software-based interpolation that estimates decimal values to make readings appear smoother. These libraries may add a decimal for temperature to reduce rounding errors or provide slightly more precise results, even if the sensor itself only provides integer values.  
+
+**Fifth Segment (8 bits)**  
+ This is the checksum byte, which is used to verify that the data received is correct. The checksum is calculated by adding together the values in the first four segments (humidity integer, humidity decimal, temperature integer, temperature decimal). The resulting sum is stored in this fifth byte. When the data is received, the microcontroller can add the first four bytes and compare this sum to the checksum byte. If the two values match, the data transmission is considered successful. If they don’t, this indicates an error in the transmission, and the data should not be trusted.  
+
+*For Instance*  
+Suppose the data frame received from the DHT11 is as follows (in binary):
+
+Humidity Integer: 00110111 (which equals 55 in decimal)
+Humidity Decimal: 00000000 (always 0 for the DHT11)
+Temperature Integer: 00010110 (which equals 22 in decimal)
+Temperature Decimal: 00000000 (always 0 for the DHT11)
+Checksum: 01001101 (which equals 77 in decimal)
+
+For verifying the checksum, the microcontroller add four segments' value  in binary and then compare it with the checksum byte. If they match, the data is correct, but if they don’t, there is an error.  
+
+#### End of Data Frame 
+
+![](assets/6_End_Of_Frame.png)  
+
+Once the DHT11 sensor has transmitted the data (temperature and humidity values), it enters a low-power consumption mode.  During this time, the sensor is idle and does not transmit any further data until the next start pulse is sent by the microcontroller. 
+
+
+
+
 
     
 
