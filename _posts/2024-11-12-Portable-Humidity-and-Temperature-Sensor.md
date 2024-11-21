@@ -14,9 +14,9 @@ published: true
 In our increasingly connected world, monitoring environmental conditions like temperature and humidity has become essential in everything from weather stations to smart home systems. In this tutorial, we'll walk through creating a temperature and humidity monitoring setup using an Arduino, a DHT11 sensor, and an LCD display. The DHT11 is a popular sensor for these measurements due to its accuracy, affordability, and compatibility with Arduino. By the end of this guide, you'll have a functioning setup that can display real-time data, helping you get one step closer to understanding and controlling your environment.
 
 
-## Overview
+## Overview  
 
-This project is a compact, portable temperature and humidity monitoring system built with Arduino, designed to provide real-time data on an LCD display and alert users with a red LED indicator when values are unreadable. Ideal for learners who are interested in environmental sensing, this setup combines portability with ease of use. The system includes a DHT sensor module for accurate temperature and humidity readings, an LCD for clear data display, a red LED to indicate sensor errors, and a small rechargeable battery for enhanced mobility. 
+This project is a compact, portable temperature and humidity monitoring system designed for easy use in various environments. Using an Arduino, a DHT11 sensor, and an LCD display, the system provides real-time data on temperature and humidity, allowing users to track environmental conditions wherever they go. The built-in error indication ensures reliability by alerting users if sensor data is unreadable, and the portable design makes it perfect for use in outdoor, mobile, or off-grid applications. This setup is ideal for learners who looking to explore environmental sensing and create their own functional weather station.  
 
 
 ## Features
@@ -25,7 +25,7 @@ This project is a compact, portable temperature and humidity monitoring system b
 Continuously displays accurate temperature and humidity readings from the DHT11 sensor on a 16x2 LCD screen, updated every few seconds. This display allows users to monitor environmental changes instantly, making it ideal for portable weather stations, greenhouse monitoring, and DIY environmental sensing projects.
 
 **Error Indication with Red LED**  
-A built-in red LED signals the user when sensor data is unreadable, such as when the sensor encounters an error or is disconnected. This feature ensures the user is immediately aware of issues, providing a reliable way to identify and troubleshoot potential problems in real time.
+A built-in red LED signals the user when sensor data is unreadable, such as when the sensor encounters an error or is disconnected. This feature ensures the user is immediately aware of issues, providing a reliable way to identify and troubleshoot potential problems in real-time.
 
 **Adjustable LCD Contrast**  
 Includes a 10k potentiometer to adjust the contrast of the 16x2 LCD screen, improving display visibility in various lighting conditions. This feature is especially useful when using the sensor outdoors or in different ambient lighting.
@@ -46,6 +46,7 @@ Red LED for visual feedback
 330 Ohm Resistor (for LED)  
 Breadboard and jumper wires  
 9V Battery with breadboard power supply  
+Arduino IDE (for coding and uploading to the board)    
 Download DHT and LiquidCrystal Libraries
 
 
