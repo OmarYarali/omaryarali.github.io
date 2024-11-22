@@ -49,6 +49,7 @@ This project focuses on building a portable and user-friendly distance detection
 
 Arduino Nano (for better portability)  
 HC-SR04 Ultrasonic Distance Sensor  
+10k Ohm Resistor (Between Echo and Ground pin)
 16x2 LCD Display  
 10k Potentiometer for LCD contrast adjustment  
 Red LED for feedback  
@@ -56,13 +57,45 @@ Red LED for feedback
 Push Button  
 10k Ohm Resistor (for Pull-Up)  
 Breadboard and Jumper Wires
-9V Battery with breadboard power supply  
+External Power Supply 
 Arduino IDE (for coding and uploading to the board)  
 Download LiquidCrystal Libraries  
 
 ## How to Download Libraries  
 
-If you’re not familiar with downloading and installing libraries in the Arduino IDE, you can check out my  [Portable Humidity and Temperature Sensor](https://omaryarali.github.io/posts/Portable-Humidity-and-Temperature-Sensor/) for a comprehensive explanation.  Additionally, before getting started, unlike the temperature and humidity sensor, which we controled using the DHT11 library in our previous project, we will control the HC-SR04 sensor manually, without using any external libraries.
+If you’re not familiar with downloading and installing libraries in the Arduino IDE, you can check out my  [Portable Humidity and Temperature Sensor](https://omaryarali.github.io/posts/Portable-Humidity-and-Temperature-Sensor/) for a comprehensive explanation.  Additionally, before getting started, unlike the temperature and humidity sensor, which we controled using the DHT11 library in our previous project, we will control the HC-SR04 sensor manually, without using any external libraries.  
+
+## How HC-SR04 ultrasonic sensor works    
+
+Images are taken from element14 presents. Before diving into how ultrasonic sensors work, let's first understand ultrasonic sound.  
+
+### What is Ultrasonic Sound?  
+
+Sound is essentially a vibration that travels through a medium like air or water, and its frequency determines how we perceive it. Human ears can detect sounds in the range of 20 Hz to 20,000 Hz, which is known as the audible range.  
+
+![](assets/photo_5332330176228484737_y.jpg)  
+
+Ultrasonic sound refers to sound waves with frequencies above 20,000 Hz—too high for human hearing. Despite being inaudible to us, these high-frequency sound waves are extremely useful in various applications. The unique properties of ultrasonic sound, such as its ability to reflect off objects and maintain its directionality, make it ideal for measuring distances, detecting objects, and even medical imaging (like ultrasounds).       
+
+### What is the Piezoelectric Effect?    
+
+The piezoelectric effect is the property of certain materials (quartz, ceramics like PZT(lead zirconate titanate)) to generate an electric signal in response to applied mechanical stress. The reverse is also true: applying an electric field to these materials causes them to deform or vibrate mechanically.  
+ 
+**Direct Piezoelectric Effect**  
+
+When you apply pressure or strain to a piezoelectric material, its internal structure generates an electrical charge. This property is useful for creating sensors that convert mechanical energy (like vibrations) into electrical signals.
+
+**Reverse Piezoelectric Effect**
+
+When you apply an electrical voltage to a piezoelectric material, it changes shape or vibrates. This is useful for creating actuators or devices that produce sound waves, such as ultrasonic transmitters. 
+
+### What is a transducer?     
+
+A transducer is a device that converts one form of energy into another. It is commonly used in measurement, sensing, and control systems. Transducers play a critical role in many engineering and scientific applications, as they bridge the gap between physical phenomena and electronic signals that can be measured or controlled. In the context of HC-SR04 ultrasonic sensor, it is basically piezoelectric transducer, device that uses the piezoelectric effect to convert between mechanical energy (such as vibrations or pressure) and electrical energy.   
+
+![](assets/photo_5332330176228484712_y.jpg)  
+
+
    
 
 
