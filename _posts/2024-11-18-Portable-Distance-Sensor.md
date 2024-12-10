@@ -122,7 +122,48 @@ Components
 Electrical to Mechanical: When an alternating voltage is applied across the electrodes, the piezoelectric element deforms and vibrates. These vibrations are transmitted to the diaphragm, which in turn generates sound waves (ultrasonic waves) that propagate through the medium (air, water, etc.). 
   
 *Reception Mode (Detecting Sound):*  
-Mechanical to Electrical: When sound waves hit the diaphragm, they cause it to vibrate. These vibrations are transferred to the piezoelectric element, which deforms and generates an electrical signal across the electrodes. This signal can then be processed and measured.
+Mechanical to Electrical: When sound waves hit the diaphragm, they cause it to vibrate. These vibrations are transferred to the piezoelectric element, which deforms and generates an electrical signal across the electrodes. This signal can then be processed and measured.  
+
+
+### Propagation of the Sound  
+
+*Beam Shape*  
+ Ultrasonic sensors typically produce a conical beam of sound, which spreads out as it moves away from the sensor. The width of the beam depends on the size and design of the sensor. For example, a sensor with a narrow beam will focus the ultrasonic waves more tightly, whereas a wider beam will cover a larger area.
+
+*Beam Angle*  
+ The beam has an angle of spread (often referred to as the "beam angle"), which determines the sensor's effective coverage area. The angle can vary depending on the sensor design, but it generally ranges from 15 to 30 degrees for many common ultrasonic sensors like the HC-SR04.  
+  
+![](assets/photo_5388997798638248390_x.jpg)  
+  
+*Emitting Ultrasonic Waves*
+ The ultrasonic sensor sends out sound waves in the form of high-frequency vibrations through a piezoelectric transducer. These waves travel outward in the shape of a cone, spreading as they move away from the sensor. When these sound waves hit an object, part of the waves are reflected (echo) back toward the sensor.  
+
+**Factors Affecting Beam Propagation**  
+
+*Environment:* The medium through which the waves propagate (e.g., air, water, or another substance) can affect the behavior of the sound waves. For example, temperature, humidity, and air pressure can influence the speed of sound and thus the accuracy of the distance measurement. Higher temperatures increase the speed of sound, slightly affecting the measurement.
+
+*Obstacles and Surface Texture:* The angle at which the sound waves hit an object, as well as the surface texture, can affect how much sound is reflected back. Smooth, flat surfaces reflect sound waves more effectively than irregular or absorbent surfaces.
+
+*Beam Spread:* As the ultrasonic beam propagates, it becomes wider and weaker. This means the sensor may lose accuracy at longer distances, especially if the object being measured is outside the optimal beam width.  
+
+**Distance Range of HC-SR04**  
+
+*Minimum Distance:* 2 cm  
+This is the shortest distance the sensor can reliably detect. Objects closer than this may not reflect the signal properly.
+
+*Maximum Distance:* 400 cm (4 meters)  
+This is the farthest distance the sensor can measure. Beyond this, the echo may be too weak or may take too long to return for reliable detection.
+
+*Accuracy*  
+The HC-SR04 offers an accuracy of approximately ±3 mm.  
+This means the measured distance can be off by up to 3 mm, which is sufficient for most applications like robotics, obstacle avoidance, and basic distance measurement.  
+
+**Practical Impact of Beam Propagation** 
+
+At short distances, the ultrasonic beam is more focused, and the sensor will give precise readings.  
+As the distance increases, the beam spreads out, meaning it may encounter more objects, causing potential interference or less accurate measurements.  
+The sensor's beam angle also limits its ability to detect objects outside its line of sight or if the object is very small relative to the beam size.  
+
 
 
    
