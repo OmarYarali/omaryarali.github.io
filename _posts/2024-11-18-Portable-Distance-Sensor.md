@@ -152,7 +152,7 @@ Components
 *Transmission Mode (Generating Sound)*  
 Electrical to Mechanical: When an alternating voltage is applied across the electrodes, the piezoelectric element deforms and vibrates. These vibrations are transmitted to the diaphragm, which in turn generates sound waves (ultrasonic waves) that propagate through the medium (air, water, etc.). 
   
-*Reception Mode (Detecting Sound):*  
+*Reception Mode (Detecting Sound)*  
 Mechanical to Electrical: When sound waves hit the diaphragm, they cause it to vibrate. These vibrations are transferred to the piezoelectric element, which deforms and generates an electrical signal across the electrodes. This signal can then be processed and measured.  
 
 
@@ -195,14 +195,28 @@ At short distances, the ultrasonic beam is more focused, and the sensor will giv
 
 ### Bonus Information: Why Ultrasonic sensors cannot work in Vacuum?  
 
-*Medium Requirement:*  Ultrasonic sensors rely on the propagation of sound waves, which need a medium to travel through (such as air, liquid, or solid). In a vacuum, there is no medium (like air) to carry the sound waves. As a result, the sound waves cannot propagate.
+*Medium Requirement*  
+ Ultrasonic sensors rely on the propagation of sound waves, which need a medium to travel through (such as air, liquid, or solid). In a vacuum, there is no medium (like air) to carry the sound waves. As a result, the sound waves cannot propagate.
  
-*Absence of Molecules:*  In a vacuum, there are no molecules to vibrate and transmit the sound waves. Sound is essentially a mechanical wave that travels by vibrating molecules. Without molecules, sound waves cannot travel, rendering ultrasonic sensors ineffective.
+*Absence of Molecules*  
+ In a vacuum, there are no molecules to vibrate and transmit the sound waves. Sound is essentially a mechanical wave that travels by vibrating molecules. Without molecules, sound waves cannot travel, rendering ultrasonic sensors ineffective.
  
 Comparison to Other Sensors
  
-Infrared Sensors: Unlike ultrasonic sensors, infrared sensors can work in a vacuum because they rely on the emission and detection of infrared light, which does not require a medium to travel through. 
-Laser Rangefinders: These also work in a vacuum because they use light (typically lasers) to measure distance, which can propagate through a vacuum. 
+Infrared Sensors: Unlike ultrasonic sensors, infrared sensors can work in a vacuum because they rely on the emission and detection of infrared light, which does not require a medium to travel through.   
+Laser Rangefinders: These also work in a vacuum because they use light (typically lasers) to measure distance, which can propagate through a vacuum.  
+
+## Connecting Sensors to Arduino  
+
+### Wiring LCD  
+
+If you're unsure how to connect LCD display to Arduino, you can check my [LCD Calculator Arduino Project](https://omaryarali.github.io/posts/lcd-calculator-arduino/) for further details.  
+
+### Wiring HC-SR04 
+
+As l mentioned earlier, the HC-SR04 ultrasonic distance sensor has four pins, each serving a specific function.
+
+![](assets/Screenshot 2024-12-10 195318.png)
 
 
 
