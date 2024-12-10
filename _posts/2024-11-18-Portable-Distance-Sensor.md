@@ -226,9 +226,14 @@ As l mentioned earlier, the HC-SR04 ultrasonic distance sensor has four pins, ea
 
 The Echo pin generates a pulse whose voltage can sometimes be inconsistent or potentially spike. A pull-down resistor (like 10k ohm) helps ensure the voltage level on the Echo pin stays at 0V (LOW) when no signal is present, protecting the Arduino from stray signals. Also when working with an LED, don’t forget to place a 330-ohm resistor in series with the LED to limit the current and prevent damaging the LED.  
 
+
+**Common Ground**  
+ Regardless of whether you're using an external or internal power supply, the ground pin of the ultrasonic sensor must be connected to the ground of your main circuit (which is usually the ground of the Arduino or microcontroller).
+This is critical because both the Arduino and the ultrasonic sensor need to have a common reference point for the signals to work correctly. Without connecting the grounds, the sensor and the microcontroller won't share the same reference, causing unreliable readings or communication issues.  
+
 ## Programming the HC-SR04 Sensor and LCD  
 
-After assembling the hardware and connecting the HC-SR04 ultrasonic sensor, LCD display, push button, and LED to your Arduino, it's time to program the system to measure distances and provide real-time feedback. The HC-SR04 ultrasonic sensor is a versatile component that emits ultrasonic waves to measure distances by calculating the time it takes for the echo to return. However, raw sensor data can be noisy and inconsistent. To address this, the program integrates a moving average filter to stabilize the readings, ensuring more accurate and reliable results. Additionally, the program is designed with user interaction in mind. A push button triggers the measurement process, while a status LED and an LCD display provide feedback to the user. The code also includes error detection and handling for situations where no echo is received, lighting up the LED and displaying an error message on the screen. 
+After assembling the hardware and connecting the HC-SR04 ultrasonic sensor, LCD display, push button, and LED to your Arduino, it's time to program the system to measure distances and provide real-time feedback. The HC-SR04 ultrasonic sensor is a versatile component that emits ultrasonic waves to measure distances by calculating the time it takes for the echo to return. However, raw sensor data can be noisy and inconsistent. To address this, the program integrates a moving average filter to stabilize the readings, ensuring more accurate and reliable results. Additionally, the program is designed with user interaction in mind. A push button triggers the measurement process, with button debouncing effectively implemented to avoid false triggers caused by mechanical bounce, while a status LED and an LCD display provide feedback to the user. The code also includes error detection and handling for situations where no echo is received, lighting up the LED and displaying an error message on the screen. 
 
 ### What is Software Filtering?  
 
@@ -295,7 +300,29 @@ Sudden changes in the distance readings are dampened, making the output more sta
 Can lag behind rapid changes in the signal (especially with larger windows).  
 May reduce the sharpness of important signal features. 
 
-![](assets/photo_5388997798638248923_y.jpg)
+![](assets/photo_5388997798638248923_y.jpg)  
+
+## Button Debouncing    
+
+The Arduino operates at a clock speed of 16 MHz, meaning it can execute up to 16 million instructions per second. Due to this high speed, it can read the state of a button thousands of times while you press it.
+
+**Bouncing in pushbuttons** refers to the mechanical phenomenon where, when a button is pressed or released, the contacts inside the switch don't immediately settle into their final open or closed state. Instead, they rapidly open and close several times within a few milliseconds before stabilizing. This happens because the metal contacts physically "bounce" due to mechanical vibrations and imperfections when they come together or separate. In electronics, this bouncing effect can cause multiple signals to be registered by a microcontroller, even though the user intended to press the button only once. To handle this, a technique called debouncing is often used. Debouncing can be done in two ways:  
+
+**Software Debouncing**  
+ Adding a small delay (e.g., 10-50 ms) in the code after detecting a button press to ignore any further changes in the button state during this period. This way, only the final, stable state is registered.  
+**Hardware Debouncing**  
+ Using components like resistors, capacitors, or specialized circuits to smooth out the signal and filter out the bounces.
+
+
+**Unpredictable Results**
+
+Because the Arduino reads the button state so frequently, it might catch the button in the middle of bouncing, leading to unpredictable results. This results in the program sometimes showing the correct behavior (on or off) and other times not, depending on the exact moment it reads the button state.
+
+**Correct Behavior Occasionally**
+
+Just like a broken clock is correct twice a day, the program might occasionally catch the button in a stable state, displaying the correct behavior. However, much of the time, the readings will be inconsistent due to the high reading frequency and bouncing effect.
+
+
 
  
 
