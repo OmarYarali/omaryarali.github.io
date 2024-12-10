@@ -65,11 +65,42 @@ Download LiquidCrystal Libraries
 
 If you’re not familiar with downloading and installing libraries in the Arduino IDE, you can check out my  [Portable Humidity and Temperature Sensor](https://omaryarali.github.io/posts/Portable-Humidity-and-Temperature-Sensor/) for a comprehensive explanation.  Additionally, before getting started, unlike the temperature and humidity sensor, which we controlled using the DHT11 library in our previous project, we will control the HC-SR04 sensor manually, without using any external libraries.  
 
-## How HC-SR04 ultrasonic sensor works?    
+## What is HC-SR04 ultrasonic sensor and how it works?  
+
+*The HC-SR04 ultrasonic sensor* is a simple and effective device for measuring distances using sound waves.
+
+![](assets/PSAOXXMXZC225202013405_ulltrasonikmesafe1.jpg)  
+
+VCC: This pin supplies power to the sensor. It typically requires a 5V power source. 
+
+Trig (Trigger): This pin is used to initiate the transmission of ultrasonic waves. A microcontroller sends a 
+short pulse (usually 10 microseconds) to this pin to trigger the sensor to emit an ultrasonic burst. 
+
+Echo: This pin outputs a signal back to the microcontroller. The duration of this signal corresponds to 
+the time taken for the ultrasonic wave to travel to the object and back. The microcontroller can then 
+calculate the distance based on this duration. 
+
+GND: This pin is connected to the ground of the power supply to complete the circuit.
+
+### How Ultrasonic sensor works?  
+
+*Triggering Ultrasonic Waves*  
+The trigger pin is supplied with a 10 µs high pulse to activate the sensor.
+This causes the transmitter to emit 8 ultrasonic bursts at a frequency of 40 kHz (beyond human hearing range).  
+
+*Propagation and Reflection*  
+These sound waves travel through the air.
+When they hit an obstacle, they reflect back toward the sensor.  
+
+*Echo Reception*  
+The receiver detects the reflected sound waves.
+The sensor measures the time taken between sending the ultrasonic burst and receiving the echo.  
+
+Overall, the HC-SR04 ultrasonic sensor provides a non-contact method for measuring distances using ultrasonic waves, making it versatile for various applications requiring distance sensing.
 
 Images are taken from element14 presents.    
         
-Before diving into how ultrasonic sensors work, let's first understand ultrasonic sound.    
+Now, let's learn about the Physics principles behind it.     
 
 ### What is Ultrasonic Sound?  
 
@@ -93,7 +124,7 @@ When you apply an electrical voltage to a piezoelectric material, it changes sha
 
 ### What is a transducer?     
 
-A transducer is a device that converts one form of energy into another. It is commonly used in measurement, sensing, and control systems. Transducers play a critical role in many engineering and scientific applications, as they bridge the gap between physical phenomena and electronic signals that can be measured or controlled. In the context of HC-SR04 ultrasonic sensor, it is basically piezoelectric transducer, device that uses the piezoelectric effect to convert between mechanical energy (such as vibrations or pressure) and electrical energy.   
+A transducer is a device that converts one form of energy into another. It is commonly used in measurement, sensing, and control systems. Transducers play a critical role in many engineering and scientific applications, as they bridge the gap between physical phenomena and electronic signals that can be measured or controlled. In the context of the HC-SR04 ultrasonic sensor, it is basically a piezoelectric transducer, the device that uses the piezoelectric effect to convert between mechanical energy (such as vibrations or pressure) and electrical energy.   
 
 ![](assets/photo_5332330176228484712_y.jpg)  
 
@@ -135,23 +166,23 @@ Mechanical to Electrical: When sound waves hit the diaphragm, they cause it to v
   
 ![](assets/photo_5388997798638248390_x.jpg)  
   
-*Emitting Ultrasonic Waves*
+*Emitting Ultrasonic Waves*  
  The ultrasonic sensor sends out sound waves in the form of high-frequency vibrations through a piezoelectric transducer. These waves travel outward in the shape of a cone, spreading as they move away from the sensor. When these sound waves hit an object, part of the waves are reflected (echo) back toward the sensor.  
 
 **Factors Affecting Beam Propagation**  
 
-*Environment:* The medium through which the waves propagate (e.g., air, water, or another substance) can affect the behavior of the sound waves. For example, temperature, humidity, and air pressure can influence the speed of sound and thus the accuracy of the distance measurement. Higher temperatures increase the speed of sound, slightly affecting the measurement.
+*Environment:*  The medium through which the waves propagate (e.g., air, water, or another substance) can affect the behavior of the sound waves. For example, temperature, humidity, and air pressure can influence the speed of sound and thus the accuracy of the distance measurement. Higher temperatures increase the speed of sound, slightly affecting the measurement.
 
-*Obstacles and Surface Texture:* The angle at which the sound waves hit an object, as well as the surface texture, can affect how much sound is reflected back. Smooth, flat surfaces reflect sound waves more effectively than irregular or absorbent surfaces.
+*Obstacles and Surface Texture:*  The angle at which the sound waves hit an object, as well as the surface texture, can affect how much sound is reflected back. Smooth, flat surfaces reflect sound waves more effectively than irregular or absorbent surfaces.
 
-*Beam Spread:* As the ultrasonic beam propagates, it becomes wider and weaker. This means the sensor may lose accuracy at longer distances, especially if the object being measured is outside the optimal beam width.  
+*Beam Spread:*  As the ultrasonic beam propagates, it becomes wider and weaker. This means the sensor may lose accuracy at longer distances, especially if the object being measured is outside the optimal beam width.  
 
 **Distance Range of HC-SR04**  
 
-*Minimum Distance:* 2 cm  
+*Minimum Distance:*  2 cm  
 This is the shortest distance the sensor can reliably detect. Objects closer than this may not reflect the signal properly.
 
-*Maximum Distance:* 400 cm (4 meters)  
+*Maximum Distance:*  400 cm (4 meters)  
 This is the farthest distance the sensor can measure. Beyond this, the echo may be too weak or may take too long to return for reliable detection.
 
 *Accuracy*  
@@ -160,9 +191,20 @@ This means the measured distance can be off by up to 3 mm, which is sufficient f
 
 **Practical Impact of Beam Propagation** 
 
-At short distances, the ultrasonic beam is more focused, and the sensor will give precise readings.  
-As the distance increases, the beam spreads out, meaning it may encounter more objects, causing potential interference or less accurate measurements.  
-The sensor's beam angle also limits its ability to detect objects outside its line of sight or if the object is very small relative to the beam size.  
+At short distances, the ultrasonic beam is more focused, and the sensor will give precise readings. As the distance increases, the beam spreads out, meaning it may encounter more objects, causing potential interference or less accurate measurements. The sensor's beam angle also limits its ability to detect objects outside its line of sight or if the object is very small relative to the beam size.  
+
+### Bonus Information: Why Ultrasonic sensors cannot work in Vacuum?  
+
+*Medium Requirement:*  Ultrasonic sensors rely on the propagation of sound waves, which need a medium to travel through (such as air, liquid, or solid). In a vacuum, there is no medium (like air) to carry the sound waves. As a result, the sound waves cannot propagate.
+ 
+*Absence of Molecules:*  In a vacuum, there are no molecules to vibrate and transmit the sound waves. Sound is essentially a mechanical wave that travels by vibrating molecules. Without molecules, sound waves cannot travel, rendering ultrasonic sensors ineffective.
+ 
+Comparison to Other Sensors
+ 
+Infrared Sensors: Unlike ultrasonic sensors, infrared sensors can work in a vacuum because they rely on the emission and detection of infrared light, which does not require a medium to travel through. 
+Laser Rangefinders: These also work in a vacuum because they use light (typically lasers) to measure distance, which can propagate through a vacuum. 
+
+
 
 
 
