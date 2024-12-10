@@ -291,8 +291,7 @@ By averaging multiple readings, the algorithm minimizes the effect of noise or s
 Provides a more reliable reading for further processing, like triggering alarms or controlling actuators.  
 Sudden changes in the distance readings are dampened, making the output more stable and reliable.    
 
-**Disadvantages**  
-
+**Disadvantages**
 Can lag behind rapid changes in the signal (especially with larger windows).  
 May reduce the sharpness of important signal features. 
 
