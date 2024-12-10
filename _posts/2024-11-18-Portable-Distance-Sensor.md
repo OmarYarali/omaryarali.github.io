@@ -56,8 +56,8 @@ Red LED for feedback
 330 Ohm Resistor (for LED)  
 Push Button  
 10k Ohm Resistor (for Pull-Up)  
-Breadboard and Jumper Wires
-External Power Supply 
+Breadboard and Jumper Wires  
+External Power Supply   
 Arduino IDE (for coding and uploading to the board)  
 Download LiquidCrystal Libraries  
 
@@ -216,7 +216,15 @@ If you're unsure how to connect LCD display to Arduino, you can check my [LCD Ca
 
 As l mentioned earlier, the HC-SR04 ultrasonic distance sensor has four pins, each serving a specific function.
 
-![](assets/Screenshot 2024-12-10 195318.png)
+![](assets/Screenshot 2024-12-10 195318.png)  
+
+## Circuit Diagram  
+
+![](assets/Screenshot 2024-12-10 194748.png)  
+
+**Additional Notes**  
+
+The Echo pin generates a pulse whose voltage can sometimes be inconsistent or potentially spike. A pull-down resistor (like 10k ohm) helps ensure the voltage level on the Echo pin stays at 0V (LOW) when no signal is present, protecting the Arduino from stray signals. Also when working with an LED, don’t forget to place a 330-ohm resistor in series with the LED to limit the current and prevent damaging the LED.
 
 
 
