@@ -296,7 +296,7 @@ By averaging multiple readings, the algorithm minimizes the effect of noise or s
 Provides a more reliable reading for further processing, like triggering alarms or controlling actuators.  
 Sudden changes in the distance readings are dampened, making the output more stable and reliable.    
 
-**Disadvantages**
+**Disadvantages**  
 Can lag behind rapid changes in the signal (especially with larger windows).  
 May reduce the sharpness of important signal features. 
 
@@ -310,6 +310,7 @@ The Arduino operates at a clock speed of 16 MHz, meaning it can execute up to 16
 
 **Software Debouncing**  
  Adding a small delay (e.g., 10-50 ms) in the code after detecting a button press to ignore any further changes in the button state during this period. This way, only the final, stable state is registered.  
+  
 **Hardware Debouncing**  
  Using components like resistors, capacitors, or specialized circuits to smooth out the signal and filter out the bounces.
 
@@ -321,6 +322,113 @@ Because the Arduino reads the button state so frequently, it might catch the but
 **Correct Behavior Occasionally**
 
 Just like a broken clock is correct twice a day, the program might occasionally catch the button in a stable state, displaying the correct behavior. However, much of the time, the readings will be inconsistent due to the high reading frequency and bouncing effect.
+
+ Now, let's get started.
+
+```c
+#include <LiquidCrystal.h>
+#define trigP 3
+#define echoP 2
+#define NUM_READINGS 50
+#define ledP 12
+#define buttonP 10
+#define interval 10000
+float lastDistance = 0;
+int errorFlag = 0;
+float total = 0;
+unsigned long previousMillis = 0;
+int buttonVal = 1;
+int oldVal = 1;
+
+int actionState = 0;
+float newReading = 0;
+LiquidCrystal lcd(4, 5, 6, 7, 8, 9);
+
+
+float distanceToTarget = 0;
+float readings[NUM_READINGS] = { 0 };
+```
+
+*LiquidCrystal lcd(4, 5, 6, 7, 8, 9):* Initializes the LCD with its control pins connected to Arduino pins 4, 5, 6, 7, 8, and 9.  
+
+**Pin Definitions**  
+*trigP (pin 3):* Trigger pin for the HC-SR04.  
+*echoP (pin 2):* Echo pin for the HC-SR04.  
+*ledP (pin 12):* Error indicator LED.  
+*buttonP (pin 10):* Push button for user interaction.  
+  
+**Constants**  
+*NUM_READINGS:* Size of the moving average filter buffer (50 readings).  
+*interval:* Maximum measurement interval (10 seconds).  
+
+**State Variables**  
+*actionState:* Indicates if the system is in measurement mode.  
+*errorFlag:* Tracks if there's an error (e.g., no echo detected).  
+*total:* Sum of the last 50 readings for moving average.  
+*distanceToTarget:* Filtered distance (moving average).  
+*readings[NUM_READINGS]:* Buffer for storing distance readings.  
+*lastDisplayedDistance:* Tracks the last displayed distance to avoid redundant updates.  
+*previousMillis:* Tracks the last measurement time for timing control.  
+
+```c
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledP, OUTPUT);
+  pinMode(trigP, OUTPUT);
+  pinMode(echoP, INPUT);
+  pinMode(buttonP, INPUT_PULLUP);
+  lcd.begin(16, 2);
+  delay(20);
+}
+```  
+
+*Serial communication* is started at 9600 baud for debugging.  
+*Pin modes* are set:    
+OUTPUT for trigP (to send ultrasonic pulses) and ledP (to indicate error).  
+INPUT for echoP (to receive ultrasonic signals) and buttonP (to detect user input).  
+*The LCD* is initialized with dimensions 16x2.  
+A short delay ensures all hardware is stable.    
+
+```c
+void promptUser() {
+  static unsigned long lastDebounceTime = 0; 
+  const unsigned long debounceDelay = 50;   
+  if (!actionState) {
+    while (true) {
+      lcd.setCursor(0, 0);
+      lcd.print("Click button for");
+      lcd.setCursor(0, 1);
+      lcd.print("measurement");
+
+      buttonVal = digitalRead(buttonP);  // Read the button state
+
+           if (buttonVal != oldVal) 
+        lastDebounceTime = millis(); // Reset the debounce timer
+      
+          if ((millis() - lastDebounceTime) > debounceDelay && buttonVal == LOW) {
+          actionState = 1;
+          break;      
+      }
+       oldVal = buttonVal; 
+    }
+    lcd.clear();
+  }
+}
+```  
+
+*Purpose:* Waits for the user to press the button before entering measurement mode.  
+*Displays a message:* "Click button for measurement" on the LCD.  
+  
+*Implements debounce logic* to prevent multiple detections from a single button press:
+Checks if the button state changes and ensures the change persists for at least 50ms.
+When the button is pressed (LOW state), sets actionState to 1, signaling that the system should take a measurement.
+
+```c
+
+
+
+
+
 
 
 
