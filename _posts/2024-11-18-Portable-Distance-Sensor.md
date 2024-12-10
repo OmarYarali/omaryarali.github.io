@@ -421,9 +421,108 @@ void promptUser() {
   
 *Implements debounce logic* to prevent multiple detections from a single button press:
 Checks if the button state changes and ensures the change persists for at least 50ms.
-When the button is pressed (LOW state), sets actionState to 1, signaling that the system should take a measurement.
+When the button is pressed (LOW state), sets actionState to 1, signaling that the system should take a measurement.  
+If the current button state is different from the previous button state, the debounce timer (lastDebounceTime) is reset. This ensures we start measuring the debounce delay from the moment the state changes.  
 
+This method assumes that the duration of a human button press is significantly longer than the debounce delay.
+
+**Explanation of Assumptions**
+*Human Reaction Time*  
+
+A typical human button press lasts anywhere from 100 milliseconds to 500 milliseconds or longer.
+The debounce delay is usually set to a small value, like 25-50 milliseconds.   
+
+*Mechanical Bounce*
+
+When a button is pressed, mechanical vibrations cause the signal to fluctuate (bounce) rapidly between HIGH and LOW for a brief period, usually 5 to 20 milliseconds.  
+
+*Filtering Out Bounces*
+
+By setting the debounce delay to 25 milliseconds, the code effectively ignores these rapid bounces.  
+If the button state remains stable for more than 25 milliseconds, the code considers it a valid press.  
+
+*Valid Press Duration*
+
+Since human button presses typically last much longer than 25 milliseconds, the debounce delay allows the system to reliably detect valid presses and ignore false bounces.  
+
+**Example Timeline**  
+*Button Pressed*  
+
+*At t = 0 ms:* The button is pressed (HIGH → LOW).
+*Between t = 0 ms and t = 15 ms:* Bounces occur (LOW, HIGH, LOW, etc.).  
+
+*Debounce Delay*     
+*At t = 25 ms:* The button state has remained LOW for 25 ms, confirming a valid press.  
+The code registers the button press and sets actionState = 1.  
+*Button Held*  
+If the button continues to be held for 100 ms or more, the debounce mechanism works without issue.
+
+### pulseIn Function  
+
+The pulseIn() function in Arduino is used to measure the duration of a high or low pulse on a pin. It's a very useful function for reading signals from devices like ultrasonic sensors or infrared receivers.  
 ```c
+pulseIn(pin, value, timeout)
+```  
+**Parameters**  
+*pin:* The pin number to read the pulse from.  
+*value:* Either HIGH or LOW, indicating whether to measure the duration of a high pulse or a low pulse.  
+*timeout (optional):* The maximum time (in microseconds) to wait for a pulse to start or stop. The default is 1 second.  
+
+**Returns**
+The duration of the pulse (in microseconds).  
+Returns 0 if no pulse starts before the timeout. 
+
+*Pin configuration:* The pin must be set to INPUT mode for pulseIn() to work correctly.  
+*Interrupts:* While pulseIn() is running, interrupts are disabled. Be cautious when using it in time-sensitive applications.  
+*Accuracy:* It's generally accurate for pulses ranging from a few microseconds to a few seconds. However, for very short pulses, results might be less accurate.  
+*Timeout:* Use the timeout parameter to avoid blocking the code if no pulse is detected.    
+
+```c  
+float getDistance() {
+  long duration = 0;
+  const float velocity = 0.0343;
+  digitalWrite(trigP, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigP, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigP, LOW);
+  duration = pulseIn(echoP, HIGH, 30000);
+  delay(20);
+
+
+  if (duration == 0) {
+    return -1;
+  } else
+  
+    return (velocity * duration / 2.);
+}
+``` 
+
+Sends a 10-microsecond pulse on the *trigP* pin.
+Waits for the echo and measures its duration using *pulseIn()*.
+Converts the duration to distance using the speed of sound (velocity = 0.0343 cm/μs).
+Returns the calculated distance. If no echo is detected, returns -1 (error state).  
+
+**Delay Between Measurements**
+  Sometimes, inadequate delay between measurements can cause issues with pulseIn() because it might not have enough time to register the pulse properly. Adding a small delay (in the range of a few milliseconds) can sometimes stabilize the readings. Additionally, you may think that adding a *delay()* after the *pulseIn()* function interrupts the program incorrectly.  However, it's important to understand how both functions work:  
+
+
+*pulseIn():* This function waits for a pulse to start and measures its duration. During this time, the program is blocked, meaning it does not execute any other code until the pulse measurement is complete or it times out.  
+
+*delay():* This function pauses the program for the specified amount of time (in milliseconds). Like pulseIn(), it also blocks the program, meaning nothing else can run during the delay.
+  
+ **Minimize pulseIn Timeout**  
+The HC-SR04 maximum measurable range is about 400 cm. At a speed of sound of 0.0343 cm/μs, the echo should return within 23 ms (round trip).  
+Set the timeout to slightly above this, say 30 ms, to handle maximum distances.  
+If you don’t need to measure far distances, reduce the timeout further for a redundant timeout.
+
+
+
+  
+
+ 
+
+
 
 
 
