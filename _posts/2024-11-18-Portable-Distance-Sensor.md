@@ -514,7 +514,109 @@ Returns the calculated distance. If no echo is detected, returns -1 (error state
  **Minimize pulseIn Timeout**  
 The HC-SR04 maximum measurable range is about 400 cm. At a speed of sound of 0.0343 cm/μs, the echo should return within 23 ms (round trip).  
 Set the timeout to slightly above this, say 30 ms, to handle maximum distances.  
-If you don’t need to measure far distances, reduce the timeout further for a redundant timeout.
+If you don’t need to measure far distances, reduce the timeout further for a redundant timeout.  
+
+```c
+float lastDisplayedDistance = -1;
+
+void displayDistance(float distance) {
+  if (abs(distance - lastDisplayedDistance) > 0.1) { // Update only if there's a significant change
+  lcd.print("Distance:");
+    lcd.setCursor(9, 0); // Position where the distance value is displayed
+    lcd.print("     "); // Clear the old value (only the number area)
+    lcd.setCursor(9, 0);
+    lcd.print(distance, 1); // Print the new value with 1 decimal place
+    lcd.print(" cm ");
+    lastDisplayedDistance = distance; // Update the stored value
+  }
+}
+```  
+
+Displays the distance on the LCD:  
+
+Checks if the new distance differs significantly from the last displayed value (reduces redundant updates).  
+Clears the old distance value and updates the display with the new distance, formatted to one decimal place.  
+
+**Why Strings Do Not Flicker**  
+*"Distance:" Is Static:*
+
+The string "Distance:" is always written in the same position at the beginning of the line (lcd.setCursor(0, 0)).  
+Since it is not being cleared or rewritten repeatedly in the displayDistance() function, it appears stable.  
+
+*Partial Clearing*  
+When updating the distance value, we only clear the numeric part (lcd.print(" ")), which ensures that static strings like "Distance:" remain untouched.  
+
+*Efficient Updates*  
+We update the numeric value (distance) only when there is a significant change (abs(distance - lastDisplayedDistance) > 0.1). This prevents unnecessary screen updates and keeps the display stable.  
+
+*Consistent Formatting*  
+The distance value is always written in the same position (lcd.setCursor(9, 0)), followed by " cm". This consistency ensures that only the numeric part is refreshed without affecting the static text.  
+
+**Advantages of Overwriting Text**  
+*Prevents Flickering*  
+lcd.clear() erases the entire screen, which can cause visible flickering as the LCD refreshes.  
+
+*Faster Updates*  
+Clearing the display and rewriting all text takes more time. Simply overwriting text is more efficient because it modifies only the required characters.  
+
+*Improved User Experience*  
+When overwriting text, static parts of the display (like labels or headings) remain untouched, making the interface more stable and visually pleasing.    
+
+*Less Power Consumption*  
+LCD modules use slightly more power during a complete refresh. Overwriting text consumes less energy.  
+
+Each time we call lcd.print("Distance:");, it rewrites the same characters at the same location on the display. If the new content is identical to the existing content on the LCD, the human eye cannot perceive any flicker because the LCD hardware does not visibly update unchanged pixels.  
+
+```c
+void loop() {
+
+
+  promptUser();
+
+  if (actionState) {
+    newReading = getDistance();
+
+    if (newReading == -1) {
+      if (!errorFlag) {
+        lcd.clear();
+        lcd.print("No Echo Detected.");
+        digitalWrite(ledP, HIGH);
+        
+        errorFlag = 1;
+      }
+    }
+  }
+
+  static int index = 0;
+  total -= readings[index];
+  readings[index] = newReading;
+  total += newReading;
+  index = (index + 1) % NUM_READINGS;
+  distanceToTarget = total / NUM_READINGS;
+
+  if (errorFlag && (newReading != -1)) {
+    lcd.clear();
+    displayDistance(distanceToTarget);
+    digitalWrite(ledP, LOW);
+    errorFlag = 0;
+  }
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis <= interval) {
+    if (newReading != -1)
+      displayDistance(distanceToTarget);
+
+  } else {
+    if (newReading == -1) {
+      digitalWrite(ledP, LOW);
+      errorFlag = 0;
+    }
+    lcd.clear();
+    previousMillis = currentMillis;
+    actionState = 0;
+  }
+}
+```
+
 
 
 
