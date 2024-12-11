@@ -341,11 +341,6 @@ If the sensor starts working after an error, this code clears the error message,
 **lastTemperature and lastHumidity**: Update the last recorded values for comparison in the next loop.  
 
 
-## Project Overview  
-
-This Arduino program creates a portable temperature and humidity monitor using a DHT11 sensor, a 16x2 LCD screen, and an error indication LED. It continuously reads temperature and humidity values from the DHT11 sensor, displaying the current temperature (in Celsius or Fahrenheit) and humidity percentage on the LCD whenever there’s a change. If the sensor fails to provide valid readings, the program triggers an error response: it displays “Failed to Read!” on the LCD and turns on the LED to indicate a problem. Once the sensor resumes normal operation, the program clears the error and continues displaying updated values, providing real-time monitoring with automatic error detection and recovery.  
-
-
 ## Conclusion
 
 Thank you all for following along on this journey to build a portable temperature and humidity monitor with Arduino. I hope you found the project inspirational and helpful! If you’d like to see this project in action, follow me on [Instagram](https://www.instagram.com/theiotenthusiast/), where I’ll be posting video demos of the device in use, from reading sensor data to displaying it on the LCD screen. I’d love to hear your feedback and see your versions of this project!
