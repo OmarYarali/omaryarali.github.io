@@ -272,22 +272,19 @@ A moving average filter is a simple, yet effective, filtering technique used to 
 
 *Simple Moving Average (SMA)*  
 All data points in the window are equally weighted.  
-*Weighted Moving Average (WMA)*
+*Weighted Moving Average (WMA)*  
 Recent data points are assigned higher weights, improving response to trends.  
 
 **How It Works**  
 
 *Window Selection*  
-
 Choose the size of the "window" (e.g., 3, 5, or 10 data points).
 A larger window provides smoother results but may lag or miss rapid changes in the data.  
 
 *Averaging*
-
 At each step, the filter calculates the average of the current data point and its surrounding neighbors within the window.  
 
 *Sliding Window*  
-
 The window "slides" as new data points are processed, ensuring the filter remains updated.  
 
 **Benefits**  
@@ -316,11 +313,9 @@ The Arduino operates at a clock speed of 16 MHz, meaning it can execute up to 16
 
 
 **Unpredictable Results**
-
 Because the Arduino reads the button state so frequently, it might catch the button in the middle of bouncing, leading to unpredictable results. This results in the program sometimes showing the correct behavior (on or off) and other times not, depending on the exact moment it reads the button state.
 
 **Correct Behavior Occasionally**
-
 Just like a broken clock is correct twice a day, the program might occasionally catch the button in a stable state, displaying the correct behavior. However, much of the time, the readings will be inconsistent due to the high reading frequency and bouncing effect.
 
  Now, let's get started.
@@ -426,34 +421,31 @@ If the current button state is different from the previous button state, the deb
 
 This method assumes that the duration of a human button press is significantly longer than the debounce delay.
 
-**Explanation of Assumptions**
+**Explanation of Assumptions**  
+    
 *Human Reaction Time*  
+A typical human button press lasts anywhere from 100 milliseconds to 500 milliseconds or longer. The debounce delay is usually set to a small value, like 25-50 milliseconds.   
 
-A typical human button press lasts anywhere from 100 milliseconds to 500 milliseconds or longer.
-The debounce delay is usually set to a small value, like 25-50 milliseconds.   
-
-*Mechanical Bounce*
-
+*Mechanical Bounce*  
 When a button is pressed, mechanical vibrations cause the signal to fluctuate (bounce) rapidly between HIGH and LOW for a brief period, usually 5 to 20 milliseconds.  
 
-*Filtering Out Bounces*
+*Filtering Out Bounces*  
+By setting the debounce delay to 50 milliseconds, the code effectively ignores these rapid bounces.  
+If the button state remains stable for more than 50 milliseconds, the code considers it a valid press.  
 
-By setting the debounce delay to 25 milliseconds, the code effectively ignores these rapid bounces.  
-If the button state remains stable for more than 25 milliseconds, the code considers it a valid press.  
-
-*Valid Press Duration*
-
+*Valid Press Duration*  
 Since human button presses typically last much longer than 25 milliseconds, the debounce delay allows the system to reliably detect valid presses and ignore false bounces.  
 
 **Example Timeline**  
-*Button Pressed*  
 
-*At t = 0 ms:* The button is pressed (HIGH → LOW).
+*Button Pressed*  
+*At t = 0 ms:* The button is pressed (HIGH → LOW).  
 *Between t = 0 ms and t = 15 ms:* Bounces occur (LOW, HIGH, LOW, etc.).  
 
 *Debounce Delay*     
 *At t = 25 ms:* The button state has remained LOW for 25 ms, confirming a valid press.  
 The code registers the button press and sets actionState = 1.  
+
 *Button Held*  
 If the button continues to be held for 100 ms or more, the debounce mechanism works without issue.
 
@@ -503,7 +495,7 @@ Waits for the echo and measures its duration using *pulseIn()*.
 Converts the duration to distance using the speed of sound (velocity = 0.0343 cm/μs).
 Returns the calculated distance. If no echo is detected, returns -1 (error state).  
 
-**Delay Between Measurements**
+**Delay Between Measurements**  
   Sometimes, inadequate delay between measurements can cause issues with pulseIn() because it might not have enough time to register the pulse properly. Adding a small delay (in the range of a few milliseconds) can sometimes stabilize the readings. Additionally, you may think that adding a *delay()* after the *pulseIn()* function interrupts the program incorrectly.  However, it's important to understand how both functions work:  
 
 
@@ -532,14 +524,14 @@ void displayDistance(float distance) {
 }
 ```  
 
-Displays the distance on the LCD:  
+*Displays the distance on the LCD:*  
 
 Checks if the new distance differs significantly from the last displayed value (reduces redundant updates).  
 Clears the old distance value and updates the display with the new distance, formatted to one decimal place.  
 
 **Why Strings Do Not Flicker**  
-*"Distance:" Is Static:*
 
+*"Distance:" Is Static:*  
 The string "Distance:" is always written in the same position at the beginning of the line (lcd.setCursor(0, 0)).  
 Since it is not being cleared or rewritten repeatedly in the displayDistance() function, it appears stable.  
 
@@ -553,6 +545,7 @@ We update the numeric value (distance) only when there is a significant change (
 The distance value is always written in the same position (lcd.setCursor(9, 0)), followed by " cm". This consistency ensures that only the numeric part is refreshed without affecting the static text.  
 
 **Advantages of Overwriting Text**  
+
 *Prevents Flickering*  
 lcd.clear() erases the entire screen, which can cause visible flickering as the LCD refreshes.  
 
@@ -569,7 +562,6 @@ Each time we call lcd.print("Distance:");, it rewrites the same characters at th
 
 ```c
 void loop() {
-
 
   promptUser();
 
@@ -639,6 +631,7 @@ int arr[20] = {0};
 *Initialization:* {0} initializes the first element of the array (arr[0]) to 0. All other elements in the array will automatically be initialized to 0 as well. This is because, in C based languages (Arduino IDE), if an array is partially initialized (with fewer elements than its size), the remaining elements are set to zero.  
 
 **What Happens in Memory**  
+
 arr[0] is explicitly set to 0.  
 arr[1] through arr[19] (the rest of the elements) will be initialized to 0 as well.  
 
@@ -717,12 +710,11 @@ If the Echo pin is disconnected and the pulseIn() function does not return 0, it
 **Why This Happens**  
 
 *Floating Pin*  
-
 When a pin is left disconnected, its voltage level can "float" due to electrical noise, interference, or random fluctuations in the circuit. This can cause the microcontroller to read unpredictable values instead of a consistent LOW. The pulseIn function waits for the pin to transition from LOW to HIGH (or vice versa) and then measures the duration of the pulse. If the pin is floating, random noise might cause it to falsely detect a pulse.  
 
 **Solution for the Problem**  
 
-*Enable Pull-Down Resistor*
+*Enable Pull-Down Resistor*  
 Use an external pull-down resistor (e.g., 10kΩ) on the Echo pin. This ensures the pin defaults to LOW when no signal is connected. Connect one end of the resistor to the Echo pin and the other to GND.  
 
 ## Conclusion
