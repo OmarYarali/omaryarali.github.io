@@ -615,8 +615,68 @@ void loop() {
     actionState = 0;
   }
 }
-```
+```  
 
+**Main Workflow**  
+    
+*Prompt User:* Calls promptUser() to wait for a button press.
+Waits until the button is pressed, then moves to measurement mode (actionState = 1).  
+
+If actionState is active, calls getDistance() to measure the distance.
+If the sensor fails (-1), displays "No Echo Detected." and turns on the LED as an error indicator.  
+
+**Smooth Distance Readings**
+
+Uses a circular buffer (readings[]) and a rolling sum (total) to calculate the average distance (distanceToTarget).  
+
+### Explanation of the Circular Buffer  
+
+```c
+int arr[20] = {0};
+```  
+
+*Array Declaration:* int arr[20] declares an array of 20 integers.  
+*Initialization:* {0} initializes the first element of the array (arr[0]) to 0. All other elements in the array will automatically be initialized to 0 as well. This is because, in C based languages (Arduino IDE), if an array is partially initialized (with fewer elements than its size), the remaining elements are set to zero.  
+
+**What Happens in Memory**  
+arr[0] is explicitly set to 0.  
+arr[1] through arr[19] (the rest of the elements) will be initialized to 0 as well.  
+
+*Important Note*  
+If you don't initialize an array like this and simply declare it, the values in the array will be uninitialized (which means they can contain garbage values). Always initialize your arrays to avoid unexpected behavior.  
+
+After these warnings, let's learn working principle of the algorithm.  
+
+```c
+ static int index = 0;
+  total -= readings[index]; // Subtract the oldest reading
+  readings[index] = newReading; // Add the new reading
+  total += newReading;   // Add to running total
+  index = (index + 1) % NUM_READINGS;
+  distanceToTarget = total / NUM_READINGS;
+```  
+
+**How Circular Buffer Works**  
+
+*Pointer or Index Logic*  
+Instead of shifting all elements to the right when adding a new reading, we maintain an index (or pointer) that marks the current position in the buffer where the next value should be stored.  
+After storing the value, we increment the index.  
+When the index reaches the end of the buffer, it wraps back to the start using the modulus operator (% NUM_READINGS).  
+
+*Replacement of Old Values*  
+The new reading replaces the oldest value in the buffer automatically, as the index cycles through the buffer.    
+
+*Efficiency*  
+This approach avoids the overhead of shifting the array elements, which takes O(n) time for every update. Instead, updating the circular buffer and calculating the average is O(1) for storage and the average calculation is O(1) because the *total* is pre-computed during updates, not recalculated from scratch.
+
+```c
+index = (index + 1) % NUM_READINGS;
+```  
+
+This line of code ensures the index wraps back to 0 after reaching the last position in the array. This makes the array behave like a circular buffer.
+
+
+## Troubleshooting  
 
 
 
