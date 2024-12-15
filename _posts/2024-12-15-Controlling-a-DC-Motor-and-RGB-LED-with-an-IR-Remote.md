@@ -44,6 +44,28 @@ The IR remote includes a dedicated button to turn the RGB LED off completely. Th
 The project uses an IR receiver module to decode signals from the remote. Each button is programmed to correspond to a specific function, ensuring a user-friendly and responsive control system.  
 
 **Interactive and Versatile Design**  
+By combining control over both a motor and an LED, this project demonstrates the versatility of IR technology and showcases how a single remote can manage multiple components efficiently. 
 
-By combining control over both a motor and an LED, this project demonstrates the versatility of IR technology and showcases how a single remote can manage multiple components efficiently.  
+## Required Components  
+
+Arduino Nano (for better portability)  
+IR Remote  
+IR Receiver Module  
+DC Motor  
+Motor Driver Module (L298N or L293D)  
+RGB LED
+Resistors (3 piece 220Ω or 330Ω)  
+Breadboard and Jumper Wires  
+External Power Supply  (For Motor)  
+Download IRremote Library (4.4.1)  
+
+## How to Download Libraries  
+
+If you’re not familiar with downloading and installing libraries in the Arduino IDE, you can check out my  [Portable Humidity and Temperature Sensor](https://omaryarali.github.io/posts/Portable-Humidity-and-Temperature-Sensor/) for a comprehensive explanation.  
+```c
+#include <IRremote.hpp>
+```  
+
+  
+
 
