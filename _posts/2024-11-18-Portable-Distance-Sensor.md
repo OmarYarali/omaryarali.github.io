@@ -12,6 +12,8 @@ published: true
 ## Introduction
 
 As technology continues to evolve and shape our daily lives, tools that enhance convenience and precision are more important than ever. In this tutorial, we’ll explore how to create a portable distance detector using an Arduino, an HC-SR04 ultrasonic sensor, and an LCD display. The HC-SR04 is widely known for its ability to measure distances accurately and efficiently by emitting ultrasonic waves and calculating the time it takes for the echo to return.  
+
+## Overview  
   
 What sets this project apart is its practicality: by simply pressing a button, the device calculates and displays the distance between the sensor and an object in real-time. Along the way, we’ll also cover essential concepts like software debouncing to ensure accurate button presses and a moving average filter to smooth out distance readings for reliable results. Additionally, it includes an error indication system to alert you when the sensor fails to detect a valid distance, ensuring reliability in various scenarios. By the end of this guide, you’ll have a handy tool that demonstrates the power of Arduino for real-world applications.  
 
