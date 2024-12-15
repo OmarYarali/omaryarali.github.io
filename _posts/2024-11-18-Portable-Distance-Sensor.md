@@ -16,11 +16,6 @@ As technology continues to evolve and shape our daily lives, tools that enhance 
 What sets this project apart is its practicality: by simply pressing a button, the device calculates and displays the distance between the sensor and an object in real-time. Along the way, we’ll also cover essential concepts like software debouncing to ensure accurate button presses and a moving average filter to smooth out distance readings for reliable results. Additionally, it includes an error indication system to alert you when the sensor fails to detect a valid distance, ensuring reliability in various scenarios. By the end of this guide, you’ll have a handy tool that demonstrates the power of Arduino for real-world applications.  
 
 
-## Overview  
-
-This project focuses on building a portable and user-friendly distance detection system which is designed to provide real-time measurements and display the results on an LCD. The system offers a user-friendly interface, allowing users to activate the device with a button press. It also includes an error indication for invalid readings, ensuring reliable performance in various environments. 
-
-
 ## Features  
 
 **Real-Time Distance Measurement**  
