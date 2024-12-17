@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/0031f615-03e4-4afe-b600-c11862fcf4b1)---
 title: Controlling a DC Motor and RGB LED with an IR Remote
 date: 2024-12-15 00:00:00 +0300
 categories: [IoT, Arduino]
