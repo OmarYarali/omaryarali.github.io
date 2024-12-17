@@ -83,13 +83,39 @@ Light is an electromagnetic wave characterized primarily by its wavelength. The 
 
 *Infrared light* has wavelengths ranging from 0.8 to 50 micrometers (µm), making it invisible to the human eye. Some animals, such as snakes, can detect infrared radiation, which corresponds to the thermal energy emitted by objects. Any object with a temperature above absolute zero (0 Kelvin or -273°C) emits infrared radiation, both during the day and at night.  
 
-### Infrared Radiation and Temperature
+### Infrared Radiation and Temperature  
 
-The higher the temperature of a body, the closer its emitted radiation is to the visible light spectrum. For example, when a blacksmith heats a piece of iron until it is "white-hot," it emits radiation across all visible wavelengths, making it appear white.  
+**Wien's Displacement Law**  
+Wien's Displacement Law describes the relationship between the temperature of a black body and the wavelength at which it emits the most radiation. This law is essential for understanding the thermal emission of objects. Wien's Displacement Law is expressed as:  
+ **𝜆max = 𝑏/𝑇**, where  
+
+λmax is the wavelength of maximum emission (in meters).  
+𝑇 is the absolute temperature of the black body (in Kelvin, K).  
+𝑏 is Wien's constant, approximately 2.897×10^−3 mK.   
+
+As the temperature of an object increases, the wavelength at which it emits the most energy decreases (i.e., shifts toward shorter wavelengths like visible or ultraviolet light). Conversely, cooler objects emit most of their radiation at longer wavelengths (infrared or microwave regions).  
+
+![](assets/Screenshot 2024-12-17 182540.png)
+
+### Bonus Information: Explanation of Why sunlight is white?  
+
+The Sun's surface temperature is about 5800 Kelvin (K). By using Wien's constant, the peak wavelength of sunlight from formula is approximately 502 nm. This corresponds to green light in the visible spectrum. So from Physics perspective, the Sun must appear green right? Before questioning Physics, let me finish my explanation.  
+
+**Why the Sun Doesn't Appear Green**  
+This is more to do with Biology than Physics. Even though the Sun’s radiation peaks in the green region, it emits a broad spectrum of light that includes significant amounts of red, blue, and other colors. Our eyes have three types of cone cells sensitive to red, green, and blue light. Our eyes have not evolved to distinguish colour of highest intensity from colours of lower intensity, therefore the brain interprets the combination of all these wavelengths as white light.  
+
+
+![](assets/image.png)  
+
+The physics of blackbody radiation and Wien's Law are accurate, but the perception of color is influenced by biology (human vision) and how our brain processes light from the entire spectrum.  
+
+The higher the temperature of a body, the closer its emitted radiation is to the visible light spectrum. Also, when a blacksmith heats a piece of iron until it is "white-hot," it emits radiation across all visible wavelengths, making it appear white.  
 
 ![](assets/Screenshot 2024-12-17 120043.png)  
 
-This relationship between temperature and emitted radiation is described by Planck's Law, which calculates the intensity of thermal radiation (or radiance) for a given temperature.  
+### Planck's Law  
+
+This relationship between temperature and emitted radiation is described by Planck's Law, which calculates the intensity of thermal radiation (or radiance) for a given temperature. Planck's Law describes the spectral distribution of electromagnetic radiation emitted by a black body at a given temperature.  
 
 ![](assets/Screenshot 2024-12-17 115423.png)  
 
@@ -99,6 +125,31 @@ c = Speed of light (3.00 × 10^8 m/s)
 λ = Wavelength of radiation (m)  
 kB = Boltzmann's constant (1.381 × 10^−23 J/K)  
 T = Absolute temperature (K)  
+
+#### The Concept of a Black Body
+
+**Black Bodies and Emissivity**  
+A black body is a theoretical object that absorbs all incident wavelengths and emits radiation solely based on its temperature. The efficiency with which real objects emit radiation is expressed by their emissivity, a value ranging from 0 to 1. Emissivity compares the radiance of a body to that of a black body.  
+
+An emissivity of 1 means the body emits radiation as efficiently as a black body.
+An emissivity of 0.5 means the body emits half the radiation of a black body.  
+
+*Emissivity* depends on an object's physical properties. For example:  
+Human skin has a high emissivity of around 0.98.  
+Polished metals, like aluminum, can have emissivity values below 0.1, making them effective infrared reflectors (infrared mirrors).   
+Knowing an object's emissivity allows for the accurate calibration of infrared devices, enabling precise temperature measurement.  
+
+**How a Black Body Works**  
+*Absorption*  
+A black body absorbs all electromagnetic radiation that strikes it, regardless of wavelength. This means it does not reflect or transmit any light—hence the term "black body".  
+
+*Emission*  
+According to its temperature, a black body emits thermal radiation across a range of wavelengths. This emission follows Planck's Law, which describes how the intensity and distribution of emitted radiation depend on temperature.  
+
+*Thermal Radiation*  
+Thermal radiation is the electromagnetic radiation emitted by any object with a temperature above absolute zero (0 Kelvin or -273.15°C). A black body emits the maximum possible radiation at every wavelength for its temperature.  
+
+
 
 
 
@@ -126,7 +177,9 @@ Herschel concluded that there must be an invisible form of radiation beyond red 
 “Infra” = below  
 “Red” = refers to its position below red in the visible spectrum.  
 
-This experiment revealed that the electromagnetic spectrum extends beyond visible light, laying the foundation for understanding other types of electromagnetic waves such as ultraviolet (UV), X-rays, and radio waves.  Infrared radiation is now used in various fields like night vision, thermal imaging, remote sensing, and medical diagnostics. This breakthrough paved the way for future discoveries in the electromagnetic spectrum, leading to innovations in communication, astronomy, and medicine.  
+This experiment revealed that the electromagnetic spectrum extends beyond visible light, laying the foundation for understanding other types of electromagnetic waves such as ultraviolet (UV), X-rays, and radio waves. This breakthrough paved the way for future discoveries in the electromagnetic spectrum, leading to innovations in communication, astronomy, and medicine. Infrared radiation is now used in various fields like night vision, thermal imaging, remote sensing, and medical diagnostics.   
+
+
 
 
 
