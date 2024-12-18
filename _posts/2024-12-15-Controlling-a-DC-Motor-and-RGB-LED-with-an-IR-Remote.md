@@ -85,9 +85,11 @@ Light is an electromagnetic wave characterized primarily by its wavelength. The 
 
 ### Infrared Radiation and Temperature  
 
-**Wien's Displacement Law**  
+As objects become hotter, two things happen to the light that they emit. The first is that they start emitting more light at every wavelength, the different colors at which that object emits. So it gets brighter. The second thing that happens is that the peak of the emission shifts from the red all the way up through the blue. It goes on even further than that if they get hot enough.
+
+### Wien's Displacement Law  
 Wien's Displacement Law describes the relationship between the temperature of a black body and the wavelength at which it emits the most radiation. This law is essential for understanding the thermal emission of objects. Wien's Displacement Law is expressed as:  
- **𝜆max = 𝑏/𝑇**, where  
+                                                                        **𝜆max = 𝑏/𝑇**, where  
 
 λmax is the wavelength of maximum emission (in meters).  
 𝑇 is the absolute temperature of the black body (in Kelvin, K).  
@@ -98,12 +100,10 @@ As the temperature of an object increases, the wavelength at which it emits the 
 ![](assets/Screenshot 2024-12-17 182540.png)
 
 ### Bonus Information: Explanation of Why sunlight is white?  
-
 The Sun's surface temperature is about 5800 Kelvin (K). By using Wien's constant, the peak wavelength of sunlight from formula is approximately 502 nm. This corresponds to green light in the visible spectrum. So from Physics perspective, the Sun must appear green right? Before questioning Physics, let me finish my explanation.  
 
 **Why the Sun Doesn't Appear Green**  
 This is more to do with Biology than Physics. Even though the Sun’s radiation peaks in the green region, it emits a broad spectrum of light that includes significant amounts of red, blue, and other colors. Our eyes have three types of cone cells sensitive to red, green, and blue light. Our eyes have not evolved to distinguish colour of highest intensity from colours of lower intensity, therefore the brain interprets the combination of all these wavelengths as white light.  
-
 
 ![](assets/image.png)  
 
@@ -114,19 +114,62 @@ The higher the temperature of a body, the closer its emitted radiation is to the
 ![](assets/Screenshot 2024-12-17 120043.png)  
 
 ### Planck's Law  
-
 This relationship between temperature and emitted radiation is described by Planck's Law, which calculates the intensity of thermal radiation (or radiance) for a given temperature. Planck's Law describes the spectral distribution of electromagnetic radiation emitted by a black body at a given temperature.  
 
-![](assets/Screenshot 2024-12-17 115423.png)  
+![](assets/image.png)  
 
-Lλ = Spectral radiance (W·sr⁻¹·m⁻³)  
+B(λ, T) = Spectral radiance (W·sr⁻¹·m⁻³)  
 h = Planck's constant (6.626 × 10^−34 J·s)  
 c = Speed of light (3.00 × 10^8 m/s)  
 λ = Wavelength of radiation (m)  
 kB = Boltzmann's constant (1.381 × 10^−23 J/K)  
 T = Absolute temperature (K)  
 
-#### The Concept of a Black Body
+From Planck's Law, we can see that:  
+*Wavelength Dependence*  
+ The amount of radiation emitted depends on the wavelength (λ).  
+
+*Temperature Influence*  
+As the temperature (T) increases, the peak of the emission curve shifts to shorter wavelengths (described by Wien's Displacement Law).  
+
+*Quantum Nature*
+The exponential term reflects the quantized nature of radiation, which was a breakthrough in explaining how energy is emitted in discrete packets (quanta).  
+
+Infrared cameras and thermal imaging devices rely on Planck's law to measure temperature.
+
+### Stefan-Boltzmann's Law  
+Stefan-Boltzmann's Law describes the power radiated by a black body in terms of its temperature. It states that the total energy emitted per unit surface area of a black body is proportional to the fourth power of its absolute temperature.  
+                                                                 **P=σT^4**  
+Where:  
+P = Power radiated per unit surface area (W/m²).  
+σ = Stefan-Boltzmann constant = 5.67 × 10^−8 W/m2K4.  
+T = Absolute temperature in Kelvin (K).  
+
+For real materials (which are not perfect black bodies), the law becomes:  
+                                                                 **P=σϵT^4**  
+Where:  
+ϵ = Emissivity of the material (0 ≤ ϵ ≤ 1).  
+A perfect black body has an emissivity 𝜖 = 1, while a perfect reflector has 𝜖 = 0.  
+
+Higher temperatures lead to exponentially higher radiation due to the T^4 relationship. As an object's temperature increases, it radiates more energy, and this radiation spans a range of wavelengths, including visible light. At higher temperatures, a greater proportion of the emitted radiation falls within the visible spectrum (Wien's Displacement Law). This is why:  
+
+Hotter objects (like stars) appear brighter and often shift towards bluish-white colors.  
+Cooler objects emit less radiation and may glow red or not emit visible light at all.  
+
+                                            
+### Kirchhoff's Law of Thermal Radiation  
+The law states that for any object at thermal equilibrium (balance), the emissivity of a surface is equal to its absorptivity. In simple terms,  
+**"A good absorber is also a good emitter at the same wavelength and temperature."**  
+
+*Emissivity (ε):* As l explained, the fraction of radiation emitted by the surface compared to a perfect black body at the same temperature.  
+*Absorptivity (α):* The fraction of incident radiation absorbed by the surface.  
+At thermal equilibrium:
+                                                                    **𝜀 = 𝛼**  
+
+Perfect black body: Has an emissivity and absorptivity of 1 (ε = α = 1).  
+Reflective surfaces: Poor absorbers, so they are also poor emitters.  A dark surface absorbs more radiation (high absorptivity) and thus emits more radiation at the same temperature. (Black Body in this context).
+
+### The Concept of a Black Body
 
 **Black Bodies and Emissivity**  
 A black body is a theoretical object that absorbs all incident wavelengths and emits radiation solely based on its temperature. The efficiency with which real objects emit radiation is expressed by their emissivity, a value ranging from 0 to 1. Emissivity compares the radiance of a body to that of a black body.  
@@ -149,7 +192,12 @@ According to its temperature, a black body emits thermal radiation across a rang
 *Thermal Radiation*  
 Thermal radiation is the electromagnetic radiation emitted by any object with a temperature above absolute zero (0 Kelvin or -273.15°C). A black body emits the maximum possible radiation at every wavelength for its temperature.  
 
+*Planck's Law:* Describes the spectral distribution of radiation emitted by a black body at a given temperature.  
+*Wien's Displacement Law:* States that the wavelength at which a black body emits the most radiation shifts as its temperature changes. Higher temperatures shift the peak emission toward shorter wavelengths (e.g., visible light).  
+Stefan-Boltzmann Law: Indicates that the total power radiated by a black body is proportional to the fourth power of its temperature.  
 
+### Bonus Information: Why are objects with emissivity near that of a black body more luminous?  
+When emissivity ϵ ≈ 1, it means the object is efficient emitter of radiation, this can be explained through Stefan-Boltzmann's Law and the concept of emissivity. If an object has an emissivity near 1 (like a black body), it radiates more power compared to objects with lower emissivity at the same temperature. For instance, stars are excellent approximations of black bodies because they absorb and emit radiation extremely efficiently across a wide spectrum of wavelengths. Their high temperature (ranging from thousands to millions of Kelvin) means they radiate a huge amount of power according to Stefan-Boltzmann's Law. Their emissivity is very close to 1 because they don't reflect much radiation — almost all the energy is emitted as light and other forms of radiation. Higher temperature results in exponentially higher radiation (T - P relationship). This combination of high temperature and high emissivity makes objects like stars incredibly luminous (they emit vast amounts of light).
 
 
 
