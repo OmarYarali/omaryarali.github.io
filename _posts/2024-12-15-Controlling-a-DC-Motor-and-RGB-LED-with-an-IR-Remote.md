@@ -73,7 +73,7 @@ If you’re not familiar with downloading and installing libraries in the Arduin
 
 Photos are taken from Teledyne FLIR and  LYNRED.  
 
-Light is an electromagnetic wave characterized primarily by its wavelength. The light spectrum is divided into segments or spectral bands.  
+Light is a form of electromagnetic radiation that exhibits wave-particle duality, meaning it can behave both as a wave and as a particle (photon). It is characterized primarily by its wavelength and frequency. The electromagnetic spectrum is divided into different segments or bands, including radio waves, microwaves, infrared, visible light, ultraviolet, X-rays, and gamma rays.   
 
 ![](assets/infrared-waves-definition-uses-examples_01001114_133518.jpg)  
 
@@ -85,15 +85,28 @@ Light is an electromagnetic wave characterized primarily by its wavelength. The 
 
 ### Infrared Radiation and Temperature  
 
-As objects become hotter, two things happen to the light that they emit. The first is that they start emitting more light at every wavelength, the different colors at which that object emits. So it gets brighter. The second thing that happens is that the peak of the emission shifts from the red all the way up through the blue. It goes on even further than that if they get hot enough.
+When objects heat up, their radiation changes in two significant ways:  
+
+*Increased Emission Across All Wavelengths*  
+ As an object becomes hotter, the object emits more radiation across all wavelengths. This makes the object appear brighter overall.    
+
+*Shift in Peak Emission*  
+The second thing that happens is that the peak of the emission shifts from the red all the way up through the blue. It goes on even further, the peak emission can shift beyond visible light into the ultraviolet region.  
 
 ### Wien's Displacement Law  
 Wien's Displacement Law describes the relationship between the temperature of a black body and the wavelength at which it emits the most radiation. This law is essential for understanding the thermal emission of objects. Wien's Displacement Law is expressed as:  
-                                                                        **𝜆max = 𝑏/𝑇**, where  
 
+![](assets/Screenshot 2024-12-18 200054.png)  
+                                                                      
+Where:  
 λmax is the wavelength of maximum emission (in meters).  
 𝑇 is the absolute temperature of the black body (in Kelvin, K).  
 𝑏 is Wien's constant, approximately 2.897×10^−3 mK.   
+
+**Note**  
+λmax is the wavelength where the intensity of radiation is the highest, but the object still emits radiation at other wavelengths.  
+
+![](assets/image.png)
 
 As the temperature of an object increases, the wavelength at which it emits the most energy decreases (i.e., shifts toward shorter wavelengths like visible or ultraviolet light). Conversely, cooler objects emit most of their radiation at longer wavelengths (infrared or microwave regions).  
 
