@@ -100,14 +100,12 @@ Wien's Displacement Law describes the relationship between the temperature of a 
 ![](assets/Screenshot 2024-12-18 200054.png)  
                                                                       
 Where:  
-λmax is the wavelength of maximum emission (in meters).  
-𝑇 is the absolute temperature of the black body (in Kelvin, K).  
-𝑏 is Wien's constant, approximately 2.897×10^−3 mK.   
+**λmax** is the wavelength of maximum emission (in meters).  
+**𝑇** is the absolute temperature of the black body (in Kelvin, K).  
+**𝑏** is Wien's constant, approximately 2.897×10^−3 mK.   
 
 **Note**  
-λmax is the wavelength where the intensity of radiation is the highest, but the object still emits radiation at other wavelengths.  
-
-![](assets/image.png)
+*λmax* is the wavelength where the intensity of radiation is the highest, but the object still emits radiation at other wavelengths.  
 
 As the temperature of an object increases, the wavelength at which it emits the most energy decreases (i.e., shifts toward shorter wavelengths like visible or ultraviolet light). Conversely, cooler objects emit most of their radiation at longer wavelengths (infrared or microwave regions).  
 
@@ -119,7 +117,7 @@ The Sun's surface temperature is about 5800 Kelvin (K). By using Wien's constant
 **Why the Sun Doesn't Appear Green**  
 This is more to do with Biology than Physics. Even though the Sun’s radiation peaks in the green region, it emits a broad spectrum of light that includes significant amounts of red, blue, and other colors. Our eyes have three types of cone cells sensitive to red, green, and blue light. Our eyes have not evolved to distinguish colour of highest intensity from colours of lower intensity, therefore the brain interprets the combination of all these wavelengths as white light.  
 
-![](assets/image.png)  
+![](assets/Screenshot 2024-12-18 200803.png)  
 
 The physics of blackbody radiation and Wien's Law are accurate, but the perception of color is influenced by biology (human vision) and how our brain processes light from the entire spectrum.  
 
@@ -165,7 +163,7 @@ This assumption led to the idea that energy levels in a system could only take c
 
 Using the concept of quantized energy, Planck derived a new formula for the spectral radiance of blackbody radiation, which replaced the Rayleigh-Jeans law. Planck's Law describes the spectral distribution of electromagnetic radiation emitted by a black body at a given temperature. It provides a formula for calculating the spectral radiance, or the intensity of electromagnetic radiation at a specific wavelength and temperature. This law resolved the “ultraviolet catastrophe” predicted by classical physics, laying the foundation for quantum mechanics.  
 
-![](assets/image.png)  
+![](assets/Screenshot 2024-12-17 201747.png)  
 
 B(λ, T) = Spectral radiance (W·sr⁻¹·m⁻³)  
 h = Planck's constant (6.626 × 10^−34 J·s)  
@@ -175,6 +173,7 @@ kB = Boltzmann's constant (1.381 × 10^−23 J/K)
 T = Absolute temperature (K)  
 
 From Planck's Law, we can see that:  
+
 *Wavelength Dependence*  
  The amount of radiation emitted depends on the wavelength (λ).  
 
