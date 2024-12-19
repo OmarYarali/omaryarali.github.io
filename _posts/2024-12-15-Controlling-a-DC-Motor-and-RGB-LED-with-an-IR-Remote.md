@@ -93,6 +93,7 @@ When objects heat up, their radiation changes in two significant ways:
 *Shift in Peak Emission*  
 The second thing that happens is that the peak of the emission shifts from the red all the way up through the blue. It goes on even further, the peak emission can shift beyond visible light into the ultraviolet region.  
 
+
 ### Wien's Displacement Law  
 Wien's Displacement Law describes the relationship between the temperature of a black body and the wavelength at which it emits the most radiation. This law is essential for understanding the thermal emission of objects. Wien's Displacement Law is expressed as:  
 
@@ -126,8 +127,43 @@ The higher the temperature of a body, the closer its emitted radiation is to the
 
 ![](assets/Screenshot 2024-12-17 120043.png)  
 
+
+### Rayleigh-Jeans law  
+The Rayleigh-Jeans Law is a formula that describes the spectral radiance of electromagnetic radiation emitted by a blackbody at a given temperature T. It is an approximation that applies at long wavelengths (or low frequencies) and is derived based on classical physics.  
+
+![](assets/image.png)  
+
+Where:  
+Bλ(T) is the spectral radiance (power emitted per unit area per unit wavelength).  
+c is the speed of light (≈ 3 × 10^8 m/s).  
+kB is Boltzmann's constant (≈ 1.38 × 10^−23 J/K).  
+T is the absolute temperature of the blackbody in Kelvin.  
+λ is the wavelength.  
+
+The Rayleigh-Jeans Law accurately predicts the behavior of blackbody radiation at long wavelengths (low frequencies). When it comes to short wavelengths (high frequencies), the law predicts an infinite amount of energy, which contradicts experimental results. This discrepancy, known as the "ultraviolet catastrophe," was one of the critical failures of classical physics and led to the development of quantum mechanics.  
+
+
+### Ultraviolet Catastrophe  
+The ultraviolet catastrophe refers to a major problem in classical physics when predicting the radiation emitted by a blackbody at different wavelengths. This issue was particularly evident in the 19th century, and its resolution led to significant advancements in the field of quantum physics. The problem with the Rayleigh-Jeans Law was resolved by Max Planck, who introduced Planck's Law of blackbody radiation in 1900. Planck's Law accurately describes the spectral radiance across all wavelengths.  
+
+![](assets/61QqQ.gif)  
+
+**What Was the Problem?**  
+Classical physics, particularly the Rayleigh-Jeans law, treated energy as continuous. According to classical theory, a blackbody could emit radiation at any frequency, and the energy emitted at a given frequency was not restricted. This led to the prediction that as the wavelength of radiation decreases (moving towards the ultraviolet region), the intensity would increase without bound—this is the ultraviolet catastrophe.  
+
+From Rayleigh-Jeans Law, as λ approaches 0 (shorter wavelengths), the intensity approaches infinity, which clearly contradicted experiments.      
+
+**Solution by Planck**  
+Planck realized that this continuous energy assumption was not correct. He proposed that energy was not emitted continuously, but rather in discrete packets, which he called quanta. Each quantum of energy was proportional to the frequency of the radiation:  
+
+![](assets/0_xN008-8vedYoNJAs.jpg)  
+
+This assumption led to the idea that energy levels in a system could only take certain discrete values, rather than any value.  
+
+
 ### Planck's Law  
-This relationship between temperature and emitted radiation is described by Planck's Law, which calculates the intensity of thermal radiation (or radiance) for a given temperature. Planck's Law describes the spectral distribution of electromagnetic radiation emitted by a black body at a given temperature.  
+
+Using the concept of quantized energy, Planck derived a new formula for the spectral radiance of blackbody radiation, which replaced the Rayleigh-Jeans law. Planck's Law describes the spectral distribution of electromagnetic radiation emitted by a black body at a given temperature. It provides a formula for calculating the spectral radiance, or the intensity of electromagnetic radiation at a specific wavelength and temperature. This law resolved the “ultraviolet catastrophe” predicted by classical physics, laying the foundation for quantum mechanics.  
 
 ![](assets/image.png)  
 
@@ -148,19 +184,24 @@ As the temperature (T) increases, the peak of the emission curve shifts to short
 *Quantum Nature*
 The exponential term reflects the quantized nature of radiation, which was a breakthrough in explaining how energy is emitted in discrete packets (quanta).  
 
-Infrared cameras and thermal imaging devices rely on Planck's law to measure temperature.
+*At high frequencies (short wavelengths),* the exponential factor dominates, which causes the intensity to decrease exponentially. This prevented the intensity from diverging, as classical theory had predicted. Instead of the radiation intensity growing infinitely at small wavelengths (the ultraviolet catastrophe), Planck's formula predicted a smooth decrease in intensity.  
+*At low frequencies (long wavelengths)*, Planck's law approximates the Rayleigh-Jeans law, meaning it agrees with classical predictions for lower energy levels (where the temperature is not very high). This matched experimental data well for longer wavelengths.
+
+Infrared cameras and thermal imaging devices rely on Planck's law to measure temperature.  
+
 
 ### Stefan-Boltzmann's Law  
 Stefan-Boltzmann's Law describes the power radiated by a black body in terms of its temperature. It states that the total energy emitted per unit surface area of a black body is proportional to the fourth power of its absolute temperature.  
-                                                                 **P=σT^4**  
+
+![](assets/336003550.gif)  
+                                                                
 Where:  
 P = Power radiated per unit surface area (W/m²).  
 σ = Stefan-Boltzmann constant = 5.67 × 10^−8 W/m2K4.  
 T = Absolute temperature in Kelvin (K).  
 
-For real materials (which are not perfect black bodies), the law becomes:  
-                                                                 **P=σϵT^4**  
-Where:  
+For real materials (which are not perfect black bodies), we also multiply with emissivity of the material.   
+
 ϵ = Emissivity of the material (0 ≤ ϵ ≤ 1).  
 A perfect black body has an emissivity 𝜖 = 1, while a perfect reflector has 𝜖 = 0.  
 
@@ -210,6 +251,7 @@ Thermal radiation is the electromagnetic radiation emitted by any object with a 
 Stefan-Boltzmann Law: Indicates that the total power radiated by a black body is proportional to the fourth power of its temperature.  
 
 ### Bonus Information: Why are objects with emissivity near that of a black body more luminous?  
+
 When emissivity ϵ ≈ 1, it means the object is efficient emitter of radiation, this can be explained through Stefan-Boltzmann's Law and the concept of emissivity. If an object has an emissivity near 1 (like a black body), it radiates more power compared to objects with lower emissivity at the same temperature. For instance, stars are excellent approximations of black bodies because they absorb and emit radiation extremely efficiently across a wide spectrum of wavelengths. Their high temperature (ranging from thousands to millions of Kelvin) means they radiate a huge amount of power according to Stefan-Boltzmann's Law. Their emissivity is very close to 1 because they don't reflect much radiation — almost all the energy is emitted as light and other forms of radiation. Higher temperature results in exponentially higher radiation (T - P relationship). This combination of high temperature and high emissivity makes objects like stars incredibly luminous (they emit vast amounts of light).
 
 
