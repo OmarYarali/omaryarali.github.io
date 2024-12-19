@@ -132,11 +132,11 @@ The Rayleigh-Jeans Law is a formula that describes the spectral radiance of elec
 ![](assets/image.png)  
 
 Where:  
-Bλ(T) is the spectral radiance (power emitted per unit area per unit wavelength).  
-c is the speed of light (≈ 3 × 10^8 m/s).  
-kB is Boltzmann's constant (≈ 1.38 × 10^−23 J/K).  
-T is the absolute temperature of the blackbody in Kelvin.  
-λ is the wavelength.  
+**Bλ(T)** is the spectral radiance (power emitted per unit area per unit wavelength).  
+**c** is the speed of light (≈ 3 × 10^8 m/s).  
+**kB** is Boltzmann's constant (≈ 1.38 × 10^−23 J/K).  
+**T** is the absolute temperature of the blackbody in Kelvin.  
+**λ** is the wavelength.  
 
 The Rayleigh-Jeans Law accurately predicts the behavior of blackbody radiation at long wavelengths (low frequencies). When it comes to short wavelengths (high frequencies), the law predicts an infinite amount of energy, which contradicts experimental results. This discrepancy, known as the "ultraviolet catastrophe," was one of the critical failures of classical physics and led to the development of quantum mechanics.  
 
@@ -144,12 +144,12 @@ The Rayleigh-Jeans Law accurately predicts the behavior of blackbody radiation a
 ### Ultraviolet Catastrophe  
 The ultraviolet catastrophe refers to a major problem in classical physics when predicting the radiation emitted by a blackbody at different wavelengths. This issue was particularly evident in the 19th century, and its resolution led to significant advancements in the field of quantum physics. The problem with the Rayleigh-Jeans Law was resolved by Max Planck, who introduced Planck's Law of blackbody radiation in 1900. Planck's Law accurately describes the spectral radiance across all wavelengths.  
 
-![](assets/61QqQ.gif)  
+![](assets/ultraviolet-catastrophe.jpg)  
 
 **What Was the Problem?**  
 Classical physics, particularly the Rayleigh-Jeans law, treated energy as continuous. According to classical theory, a blackbody could emit radiation at any frequency, and the energy emitted at a given frequency was not restricted. This led to the prediction that as the wavelength of radiation decreases (moving towards the ultraviolet region), the intensity would increase without bound—this is the ultraviolet catastrophe.  
 
-From Rayleigh-Jeans Law, as λ approaches 0 (shorter wavelengths), the intensity approaches infinity, which clearly contradicted experiments.      
+From Rayleigh-Jeans Law, as *λ* approaches 0 (shorter wavelengths), the intensity approaches infinity, which clearly contradicted experiments.      
 
 **Solution by Planck**  
 Planck realized that this continuous energy assumption was not correct. He proposed that energy was not emitted continuously, but rather in discrete packets, which he called quanta. Each quantum of energy was proportional to the frequency of the radiation:  
@@ -165,12 +165,12 @@ Using the concept of quantized energy, Planck derived a new formula for the spec
 
 ![](assets/Screenshot 2024-12-17 201747.png)  
 
-B(λ, T) = Spectral radiance (W·sr⁻¹·m⁻³)  
-h = Planck's constant (6.626 × 10^−34 J·s)  
-c = Speed of light (3.00 × 10^8 m/s)  
-λ = Wavelength of radiation (m)  
-kB = Boltzmann's constant (1.381 × 10^−23 J/K)  
-T = Absolute temperature (K)  
+**B(λ, T)** = Spectral radiance (W·sr⁻¹·m⁻³)  
+**h** = Planck's constant (6.626 × 10^−34 J·s)  
+**c** = Speed of light (3.00 × 10^8 m/s)  
+**λ** = Wavelength of radiation (m)  
+**kB** = Boltzmann's constant (1.381 × 10^−23 J/K)  
+**T** = Absolute temperature (K)  
 
 From Planck's Law, we can see that:  
 
@@ -180,7 +180,7 @@ From Planck's Law, we can see that:
 *Temperature Influence*  
 As the temperature (T) increases, the peak of the emission curve shifts to shorter wavelengths (described by Wien's Displacement Law).  
 
-*Quantum Nature*
+*Quantum Nature*  
 The exponential term reflects the quantized nature of radiation, which was a breakthrough in explaining how energy is emitted in discrete packets (quanta).  
 
 *At high frequencies (short wavelengths),* the exponential factor dominates, which causes the intensity to decrease exponentially. This prevented the intensity from diverging, as classical theory had predicted. Instead of the radiation intensity growing infinitely at small wavelengths (the ultraviolet catastrophe), Planck's formula predicted a smooth decrease in intensity.  
@@ -194,11 +194,6 @@ Stefan-Boltzmann's Law describes the power radiated by a black body in terms of 
 
 ![](assets/336003550.gif)  
                                                                 
-Where:  
-P = Power radiated per unit surface area (W/m²).  
-σ = Stefan-Boltzmann constant = 5.67 × 10^−8 W/m2K4.  
-T = Absolute temperature in Kelvin (K).  
-
 For real materials (which are not perfect black bodies), we also multiply with emissivity of the material.   
 
 ϵ = Emissivity of the material (0 ≤ ϵ ≤ 1).  
@@ -216,6 +211,7 @@ The law states that for any object at thermal equilibrium (balance), the emissiv
 
 *Emissivity (ε):* As l explained, the fraction of radiation emitted by the surface compared to a perfect black body at the same temperature.  
 *Absorptivity (α):* The fraction of incident radiation absorbed by the surface.  
+
 At thermal equilibrium:
                                                                     **𝜀 = 𝛼**  
 
@@ -233,6 +229,7 @@ An emissivity of 0.5 means the body emits half the radiation of a black body.
 *Emissivity* depends on an object's physical properties. For example:  
 Human skin has a high emissivity of around 0.98.  
 Polished metals, like aluminum, can have emissivity values below 0.1, making them effective infrared reflectors (infrared mirrors).   
+
 Knowing an object's emissivity allows for the accurate calibration of infrared devices, enabling precise temperature measurement.  
 
 **How a Black Body Works**  
@@ -251,16 +248,16 @@ Stefan-Boltzmann Law: Indicates that the total power radiated by a black body is
 
 ### Bonus Information: Why are objects with emissivity near that of a black body more luminous?  
 
-When emissivity ϵ ≈ 1, it means the object is efficient emitter of radiation, this can be explained through Stefan-Boltzmann's Law and the concept of emissivity. If an object has an emissivity near 1 (like a black body), it radiates more power compared to objects with lower emissivity at the same temperature. For instance, stars are excellent approximations of black bodies because they absorb and emit radiation extremely efficiently across a wide spectrum of wavelengths. Their high temperature (ranging from thousands to millions of Kelvin) means they radiate a huge amount of power according to Stefan-Boltzmann's Law. Their emissivity is very close to 1 because they don't reflect much radiation — almost all the energy is emitted as light and other forms of radiation. Higher temperature results in exponentially higher radiation (T - P relationship). This combination of high temperature and high emissivity makes objects like stars incredibly luminous (they emit vast amounts of light).
+When emissivity ϵ ≈ 1, it means the object is efficient emitter of radiation, this can be explained through Stefan-Boltzmann's Law and the concept of emissivity. If an object has an emissivity near 1 (like a black body), it radiates more power compared to objects with lower emissivity at the same temperature. For instance, stars are excellent approximations of black bodies because they absorb and emit radiation extremely efficiently across a wide spectrum of wavelengths. Their high temperature (ranging from thousands to millions of Kelvin) means they radiate a huge amount of power according to Stefan-Boltzmann's Law. Their emissivity is very close to 1 because they don't reflect much radiation — almost all the energy is emitted as light and other forms of radiation. Higher temperature results in exponentially higher radiation (T - P relationship). This combination of high temperature and high emissivity makes objects like stars incredibly luminous (they emit vast amounts of light).  
 
-
+![](assets/eso_eso1205a_3000.jpg)  
 
 
 ### Discovery of Infrared Radiation  
 
 Up until 1800, visible light was the only known part of the electromagnetic spectrum that's when astronomer Sir William Herschel discovered a whole new world of infrared radiation. This discovery marked a significant milestone in understanding the electromagnetic spectrum beyond visible light.  
 
-**Using a Prism to Split Sunlight**
+**Using a Prism to Split Sunlight**  
 Herschel passed sunlight through a glass prism, which split the white light into its constituent colors (a spectrum of red, orange, yellow, green, blue, indigo, and violet). In his observations of sunlight, Herschel experimented with colors of light and noticed each one passed a different amount of heat.  
 
 **Measuring Heat in Different Colors**  
