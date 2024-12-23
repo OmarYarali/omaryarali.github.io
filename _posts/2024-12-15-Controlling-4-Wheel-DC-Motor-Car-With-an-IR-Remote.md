@@ -81,7 +81,7 @@ Light is a form of electromagnetic radiation that exhibits wave-particle duality
 
 ![](assets/Screenshot 2024-12-17 115237.png)  
 
-*Infrared light* has wavelengths ranging from 0.8 to 50 micrometers (µm), making it invisible to the human eye. Some animals, such as snakes, can detect infrared radiation, which corresponds to the thermal energy emitted by objects. Any object with a temperature above absolute zero (0 Kelvin or -273°C) emits infrared radiation, both during the day and at night.  
+*Infrared Radiation* has wavelengths ranging from 0.8 to 50 micrometers (µm), making it invisible to the human eye. Some animals, such as snakes, can detect infrared radiation, which corresponds to the thermal energy emitted by objects. Any object with a temperature above absolute zero (0 Kelvin or -273°C) emits infrared radiation, both during the day and at night.  
 
 ### Infrared Radiation and Temperature  
 
@@ -276,7 +276,30 @@ Herschel concluded that there must be an invisible form of radiation beyond red 
 “Infra” = below  
 “Red” = refers to its position below red in the visible spectrum.  
 
-This experiment revealed that the electromagnetic spectrum extends beyond visible light, laying the foundation for understanding other types of electromagnetic waves such as ultraviolet (UV), X-rays, and radio waves. This breakthrough paved the way for future discoveries in the electromagnetic spectrum, leading to innovations in communication, astronomy, and medicine. Infrared radiation is now used in various fields like night vision, thermal imaging, remote sensing, and medical diagnostics.   
+This experiment revealed that the electromagnetic spectrum extends beyond visible light, laying the foundation for understanding other types of electromagnetic waves such as ultraviolet (UV), X-rays, and radio waves. This breakthrough paved the way for future discoveries in the electromagnetic spectrum, leading to innovations in communication, astronomy, and medicine. Infrared radiation is now used in various fields like night vision, thermal imaging, remote sensing, and medical diagnostics.  
+
+
+When I first learned about Wien's displacement law, I was fascinated to discover that the Sun's peak wavelength is in the green spectrum of visible light. However, then I came across an experiment that left me puzzled— How infrared radiation feel hotter than green light? How can this be? If the Sun's peak wavelength is in the visible spectrum (around green), in addition, green light has more energy than infrared because it has a shorter wavelength and higher frequency. Then, why does infrared radiation feel hotter to us than visible light?  
+
+Before reading this, have you ever thought about this contradiction? It's one of those moments where science makes us stop and think deeper about what’s really happening. Let’s explore this intriguing question together.  
+
+### Why Infrared Feels Hotter Even Though Green Is the Peak Wavelength?  
+
+To understand this, we need to investigate several aspects of sunlight.  
+
+**1. Wavelength and Heat Emission**  
+As we explained, according to Wien's Displacement Law, the peak wavelength of radiation emitted by an object depends on its temperature. The Sun has a surface temperature of around 5,500°C (5,800 K), which places its peak wavelength in the visible light range, more specifically in green light. However, the Sun emits radiation across a broad spectrum, not just at the peak wavelength. While the peak of the Sun's radiation is in the visible spectrum, it emits far more energy overall in the infrared spectrum. The total intensity of radiation emitted by the Sun spans from infrared to ultraviolet, with infrared radiation covering a much larger range of wavelengths than visible light. So, while the peak is in the visible range, the total emitted energy in the infrared is greater because of the larger range of wavelengths in the infrared (0.7 µm to 1 mm) and the nature of thermal energy. As it travels through space and reaches Earth, infrared radiation is primarily responsible for warming us up, even though it's invisible to the naked eye.  
+
+**2. How They Relate But Don't Contradict**  
+Herschel’s discovery of infrared radiation was about the heat carried by light. He found that infrared radiation (beyond red) carries more thermal energy than visible light because the Sun emits a lot of energy in the infrared.  
+
+On the other hand, Black body radiation refers to the color of emitted light, which shifts from red to blue as the temperature of the object increases. Blue light corresponds to a hotter temperature, but it does not necessarily mean it carries more heat in the way infrared does. In the context of glowing objects or black body radiation, for instance, blue light corresponds to higher temperatures than red light. However, Herschel's experiment dealt with solar radiation at Earth's surface, where the sun’s emission spectrum delivers more heat energy in the red and infrared range.  Blue light is emitted by hotter objects, meaning it comes from objects with higher temperatures (like blue stars), but it doesn't carry heat as effectively as infrared. Infrared radiation (even though it corresponds to lower-energy photons) is more abundant in the Sun's radiation and is much better at carrying heat to Earth.  
+
+**3. Why Infrared Transfers Heat Better**  
+Infrared radiation is effective at transferring heat because it interacts efficiently with molecules in the Earth's atmosphere and on surfaces. When infrared radiation strikes an object, its energy is absorbed and converted to heat. Even though visible light and ultraviolet light carry more energy per photon (especially the blue and UV parts), they don't transfer heat as effectively because they interact differently with materials (e.g., UV tends to cause chemical changes rather than heat).  
+
+
+
 
 
 
