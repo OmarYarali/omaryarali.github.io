@@ -1,5 +1,5 @@
 ---
-title: Controlling a DC Motor and RGB LED with an IR Remote
+title: Controlling 4-Wheel DC Motor Car With an IR Remote.
 date: 2024-12-15 00:00:00 +0300
 categories: [IoT, Arduino]
 tags: [Embedded Project, Electronics, IR, NEC, Remote, RGB LED, DC Motor, Control, Integrated Circuit, Motor Driver, Power Supply]   
