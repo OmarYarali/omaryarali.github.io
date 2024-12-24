@@ -381,7 +381,7 @@ The actual command data, typically 32 bits divided into four 8-bit segments:
 *Address Inverted (8 bits):* Inverted bits of the address for error checking.  
 *Command (8 bits):* Specifies the action or function (e.g., volume up, channel change).  
 *Command Inverted (8 bits):* Inverted bits of the command for error checking.  
-*Stop Bit:* A short pulse (560 µs) after the data, indicating the end of the transmission.  
+*Stop Bit:* A short pulse (562.5 µs) after the data, indicating the end of the transmission.  
 
 ![](assets/Screenshot 2024-12-14 221235.png)  
 
@@ -547,19 +547,89 @@ This is a common way to ensure data integrity when dealing with IR signals using
 
 ### Pulse Distance Encoding  
 
-The NEC protocol uses Pulse Distance Encoding to represent binary 0s and 1s. The pulses are always 562.5 µs long, but the spaces (gaps) that follow them differ for 0 and 1.  
+![](assets/nectrain.png)  
 
-![](assets/Screenshot 2024-12-24 154946.png)  
+The NEC protocol uses Pulse Distance Encoding to represent binary 0s and 1s. The pulses are always 562.5 µs long, but the spaces (gaps) that follow them differ for 0 and 1. With this protocol the LSB is transmitted first. The total transmission time is constant because every bit is repeated with its inverted length.  
+27ms to transmit both the 16 bits for the address (address + inverse) and the 16 bits for the command (command + inverse).  
+This comes from each of the 16 bit blocks ultimately containing eight '0's and eight '1's - giving (8 * 1.125ms) + (8 * 2.25ms).  
+If you're not interested in this reliability you can ignore the inverted values, or you can expand the Address and Command to 16 bits each.  
+
+![](assets/Screenshot 2024-12-24 154946.png)    
 
 **Start Bit**  
 A 9 ms pulse followed by a 4.5 ms space.  
 
-Data Bits:
-Each bit is sent as a 562.5 µs pulse followed by a space:
-0: 562.5 µs space.
-1: 1.6875 ms space.
-Stop:
-After all bits are sent, a final 562.5 µs pulse.
+**Data Bits**
+Each bit is sent as a 562.5 µs pulse followed by a space:  
+Logical '0' – a 562.5µs pulse burst followed by a 562.5µs space, with a total transmit time of 1.125ms.  
+Logical '1' – a 562.5µs pulse burst followed by a 1.6875ms space, with a total transmit time of 2.25ms.  
+
+**Stop**  
+After all bits are sent, a final 562.5 µs pulse.  
+
+![](assets/necmodulation.png)  
+
+### Repeat Signals  
+When a button on the remote control is first pressed, the full 32-bit command frame (address, address inverted, command, command inverted) is transmitted once. If the button remains pressed, the remote does not retransmit the full 32-bit frame repeatedly. Instead, it sends a simpler repeat code at intervals of approximately 110 ms.  
+
+*Repeat Signal Format:*  
+9 ms AGC (Automatic Gain Control) burst: A long pulse for receiver synchronization.  
+2.25 ms space: A pause to separate the AGC burst from the next signal.  
+562.5 µs burst: A short pulse that acts as a marker to complete the repeat code.  
+
+![](assets/necsequence.png)  
+
+**Purpose of the Repeat Code**  
+The repeat code tells the receiving device that the user intends to continue the same action (e.g., increasing volume). By avoiding retransmission of the full command, the protocol saves power in the remote control, reduces processing overhead in the receiving device and minimizes IR signal interference in the environment.  
+
+**Example Scenario**  
+Initial Action: You press the "Volume Up" button on your TV remote. The remote sends the full NEC command frame corresponding to "Volume Up."  
+Holding the Button: If you keep holding the button, the remote sends a repeat code every 110 ms, indicating the same action should continue.  
+
+### Extended NEC protocol  
+
+The extended NEC protocol was introduced to allow for more devices by increasing the address space.  In this protocol:  
+Both the low byte and high byte of the address are independent 8-bit values.  
+Address = *High Byte* + *Low Byte* (total 16 bits).  
+
+However, there’s a special case:  
+If the low byte of the extended address is the exact inverse of the high byte, it is not a valid extended address because it matches the structure of the standard NEC protocol. When the low byte is the exact inverse of the high byte, the receiver cannot distinguish whether the signal follows the standard NEC protocol or the extended NEC protocol. To avoid ambiguity, such address combinations are reserved as invalid extended addresses. In the extended NEC protocol, the full 16-bit address space allows for 65,536 possible addresses. Out of these, 256 combinations (where Low Byte = ~High Byte) are invalid because they conflict with the standard NEC protocol. A receiver implementing both standard and extended NEC protocols must check the address structure to determine which protocol is being used:  
+
+If Low Byte = ~High Byte, treat it as standard NEC.  
+Otherwise, treat it as extended NEC.  
+
+**Why No Inverse Checking in Extended NEC?**  
+*Larger Address Space*  
+The extended NEC protocol is designed to support up to 65,280 unique addresses (excluding the 256 ambiguous ones). Adding a bitwise inverse relationship would halve this space, which defeats the purpose of "extending" the address range.  
+
+*Protocol Evolution*  
+The extended protocol assumes that devices using it have robust error-checking mechanisms (e.g., checksum, command validation) beyond the address bytes.  
+
+The command redundancy is still preserved. Therefore each address can still handle 256 different commands.  
+
+Photos are taken from SB Projects.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
