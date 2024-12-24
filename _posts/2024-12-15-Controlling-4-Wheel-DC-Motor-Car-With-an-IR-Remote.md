@@ -476,10 +476,12 @@ address = 0xE6  // The highest 8 bits of rawData
 ```  
 
 
-**Bitwise And (&)**  
+**Bitwise Operators**  
 The & (bitwise AND) in C takes two numbers as operands and does AND on every bit of two numbers. The result of AND is 1 only if both bits are 1.  
+The | (bitwise OR) in C takes two numbers as operands and does OR on every bit of two numbers. The result of OR is 1 if any of the two bits is 1.  
+The ^ (bitwise XOR) in C takes two numbers as operands and does XOR on every bit of two numbers. The result of XOR is 1 if the two bits are different.   
 
-![]()
+![](assets/bitwise.jpg)  
 
 ```c
 uint8_t invertedAddress = (rawData >> 16) & 0xFF;
@@ -489,42 +491,58 @@ Masking with 0xFF (& 0xFF) ensures that only the lower 8 bits are kept, discardi
 
 ![](assets/Screenshot 2024-12-15 180419.png)  
 
+### Explanation of Masking  
+Let's assume rawData is:  
+```yaml
+rawData = 0xE619FF00
+```  
+
+In binary, it looks like this:  
+```yaml
+  1110 0110     0001 1001        1111 1111       0000 0000
+| Address  | Inverted Address |  Command   |  Inverted Command |
+    0xE6          0x19              0xFF              0x00
+```  
+When we shift rawData right by 16 bits (>> 16), we get:  
+```yaml
+1110 0110 0001 1001 1111 1111 0000 0000  (original rawData)
+↓↓↓↓ ↓↓↓↓ ↓↓↓↓ ↓↓↓↓ ↓↓↓↓ ↓↓↓↓ ↓↓↓↓ ↓↓↓↓  (shift right by 16)
+0000 0000 0000 0000 1110 0110 0001 1001
+```  
+Now, the inverted address (0001 1001) is in the least significant byte.  
+
+**Masking with 0xFF**  
+```yaml
+0000 0000 0000 0000 0000 0000 1111 1111 // (0XFF)
+```
+When we perform the bitwise AND (&) with 0xFF, we keep only the least significant byte:  
+
+```yaml
+  0000 0000 0000 0000 1110 0110 0001 1001  (after right shift)
+& 0000 0000 0000 0000 0000 0000 1111 1111  (mask with 0xFF)
+-----------------------------------------
+  0001 1001                              → 0x19
+```  
+*invertedAddress* now contains 0x19 (the second byte of the original rawData).  
 
 
+```c
+ if (address == (invertedAddress ^ 0xFF)) {
+```  
 
+**Check Address and Inverted Address**  
+*invertedAddress ^ 0xFF* flips all the bits of invertedAddress (bitwise XOR with 0xFF). When *invertedAddress* all bits are flipped, if the transmission was successful, it should be equal to *address*.  This checks if the address and invertedAddress are correct inverses of each other. If they match, the data is likely valid.  
 
+If the address and inverted address match, a confirmation message is printed. An error message is printed if there's a mismatch.  
 
+```c
+IR.resume();
+```  
+Prepares the IR receiver to handle the next signal.  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```c   
-uint8_t address = rawData >> 24;
-```   
-
-
-
-
-
-
-
-
+**Summary of this code**  
+Receives an IR signal and decodes it. Extracts the address and inverted address from the rawData. Checks if the address and inverted address are valid by confirming they are inverses of each other. Prints a message based on whether the check passes or fails. Resumes listening for the next IR signal.  
+This is a common way to ensure data integrity when dealing with IR signals using the NEC protocol or similar protocols that use address verification.  
 
 
 ### Pulse Distance Encoding  
