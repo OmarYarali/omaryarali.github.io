@@ -559,7 +559,7 @@ If you're not interested in this reliability you can ignore the inverted values,
 **Start Bit**  
 A 9 ms pulse followed by a 4.5 ms space.  
 
-**Data Bits**
+**Data Bits**  
 Each bit is sent as a 562.5 µs pulse followed by a space:  
 Logical '0' – a 562.5µs pulse burst followed by a 562.5µs space, with a total transmit time of 1.125ms.  
 Logical '1' – a 562.5µs pulse burst followed by a 1.6875ms space, with a total transmit time of 2.25ms.  
@@ -608,9 +608,6 @@ The extended protocol assumes that devices using it have robust error-checking m
 The command redundancy is still preserved. Therefore each address can still handle 256 different commands.  
 
 Photos are taken from SB Projects.  
-
-
-
 
 
 
