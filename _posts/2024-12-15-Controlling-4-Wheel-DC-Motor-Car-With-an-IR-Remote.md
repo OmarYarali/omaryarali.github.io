@@ -362,6 +362,192 @@ Custom Electronics Projects: IR-based communication between devices.
 
 The NEC (Nippon Electric Company) protocol is a popular infrared (IR) communication protocol commonly used for remote controls in consumer electronics like TVs, audio systems, and other appliances. It is designed to transmit commands via IR signals in a structured and reliable format.  
 
+### Key Features of the NEC Protocol  
+
+**Carrier Frequency**  
+The IR signal is modulated at a carrier frequency of 38 kHz, which helps the receiver differentiate between the transmitted signal and ambient IR noise.  
+
+**Data Format**  
+The protocol transmits data in a series of pulses and spaces, representing binary "1" and "0".  
+
+**Frame Structure**  
+An NEC protocol message consists of four key components:  
+
+*Leader Code:* A long pulse (9 ms) followed by a long space (4.5 ms). This signals the start of a transmission.  
+
+**Data Bits**  
+The actual command data, typically 32 bits divided into four 8-bit segments:  
+*Address (8 bits):* Identifies the device to be controlled.  
+*Address Inverted (8 bits):* Inverted bits of the address for error checking.  
+*Command (8 bits):* Specifies the action or function (e.g., volume up, channel change).  
+*Command Inverted (8 bits):* Inverted bits of the command for error checking.  
+*Stop Bit:* A short pulse (560 µs) after the data, indicating the end of the transmission.  
+
+![](assets/Screenshot 2024-12-14 221235.png)  
+
+### Why Protocol use Inverted Addresses?  
+
+The inverted address in an IR remote protocol, such as the NEC protocol, is a way to ensure data integrity and detect errors.  
+
+**What is the Inverted Address?**  
+The inverted address is the bitwise complement of the address.  
+This means every bit in the inverted address is the opposite of the corresponding bit in the address:  
+If a bit in the address is 1, the same bit in the inverted address is 0.  
+If a bit in the address is 0, the same bit in the inverted address is 1.  
+
+**Example**  
+Address: 0b11001100  
+Inverted Address: 0b00110011 (each bit is flipped)  
+
+**Why Use an Inverted Address?**  
+*Error Detection*  
+The inverted address helps verify that the data was received correctly. If the address and its inversion don't match, an error likely occurred during transmission.  
+
+*Data Integrity*  
+By sending both the original and inverted values, the receiving system can confirm the accuracy of the received signal.  
+
+
+## How to Check Inverted Address in Code?  
+
+When decoding an NEC IR signal in Arduino:  
+```c  
+if (IR.decode()) {
+  unsigned long rawData = IR.decodedIRData.decodedRawData;
+  uint8_t address = rawData >> 24;  // Extract the first 8 bits (Address)
+  uint8_t invertedAddress = (rawData >> 16) & 0xFF;  // Extract the next 8 bits (Inverted Address)
+
+  if (address == (invertedAddress ^ 0xFF)) {
+    Serial.println("Address and Inverted Address match!");
+  } else {
+    Serial.println("Error: Address mismatch.");
+  }
+
+  IR.resume();
+}
+```  
+
+### Code Explanation  
+
+```c
+if (IR.decode()) {
+```  
+This checks if an IR signal has been received and successfully decoded. If IR.decode() returns true, the IR data is available for processing.  
+
+```c
+unsigned long rawData = IR.decodedIRData.decodedRawData;
+```  
+rawData stores the entire 32-bit value received from the IR remote. As we explained, this 32-bit data typically contains:  
+Address (8 bits)  
+Inverted Address (8 bits)  
+Command (8 bits)  
+Inverted Command (8 bits)  
+
+**Right Shift(>>) Operator**  
+Right Shift(>>) is a binary operator that takes two numbers, right shifts the bits of the first operand, and the second operand decides the number of places to shift.  
+
+![](assets/rightshift.png)  
+
+```c
+uint8_t address = rawData >> 24;
+```  
+
+**Extract the First 8 Bits**  
+The right shift operation (>> 24) moves the bits of rawData 24 positions to the right, effectively discarding the lower 24 bits. The result of the shift keeps only the highest (first) 8 bits of the original 32-bit value. Since address is declared as uint8_t (an 8-bit data type), it will only store those 8 bits.  
+
+**Example**  
+Suppose rawData is:  
+```yaml
+0xE619FF00
+```  
+
+In binary it is:  
+```yaml
+1110 0110 0001 1001 1111 1111 0000 0000
+```   
+
+When you do rawData >> 24:  
+```yaml
+0000 0000 0000 0000 0000 0000 1110 0110
+```  
+
+Now, storing it in uint8_t address:  
+```yaml
+address = 0xE6  // The highest 8 bits of rawData   
+```  
+
+
+**Bitwise And (&)**  
+The & (bitwise AND) in C takes two numbers as operands and does AND on every bit of two numbers. The result of AND is 1 only if both bits are 1.  
+
+![]()
+
+```c
+uint8_t invertedAddress = (rawData >> 16) & 0xFF;
+```  
+Right shift by 16 bits (>> 16) moves the next 8 bits (the inverted address) to the least significant position.  
+Masking with 0xFF (& 0xFF) ensures that only the lower 8 bits are kept, discarding any higher bits.  
+
+![](assets/Screenshot 2024-12-15 180419.png)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```c   
+uint8_t address = rawData >> 24;
+```   
+
+
+
+
+
+
+
+
+
+
+### Pulse Distance Encoding  
+
+The NEC protocol uses Pulse Distance Encoding to represent binary 0s and 1s. The pulses are always 562.5 µs long, but the spaces (gaps) that follow them differ for 0 and 1.  
+
+![](assets/Screenshot 2024-12-24 154946.png)  
+
+**Start Bit**  
+A 9 ms pulse followed by a 4.5 ms space.  
+
+Data Bits:
+Each bit is sent as a 562.5 µs pulse followed by a space:
+0: 562.5 µs space.
+1: 1.6875 ms space.
+Stop:
+After all bits are sent, a final 562.5 µs pulse.
+
+
+
+
+
+
 
 
 
