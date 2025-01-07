@@ -609,6 +609,112 @@ The command redundancy is still preserved. Therefore each address can still hand
 
 Photos are taken from SB Projects.  
 
+## IR Remote Library can affect PWM Capability  
+
+In many Embedded projects, PWM (Pulse Width Modulation) is a crucial technique used to control the brightness of LEDs, motor speeds, and even audio signals. PWM works by adjusting the amount of time a signal is on versus off within a set period, allowing for smooth control over various devices.  
+
+However, when incorporating IR remote control functionality using the IRremote library, it can inadvertently affect PWM on specific pins. This is because the IRremote library utilizes hardware timers to decode signals, and those timers are also responsible for controlling PWM on certain pins. As a result, the library may override or interfere with PWM functionality, particularly on pins linked to timers it uses.  
+
+While you may not be using PWM in your project, understanding how the IR library affects timers and PWM can be useful in optimizing your project and troubleshooting potential conflicts. 
+
+### IRremote Library and Timer Conflicts  
+
+The IRremote library typically uses Timer2 on the Arduino (specifically on the ATmega328P chip) to handle infrared signal decoding. However, Timer2 is also responsible for controlling PWM signals on pins 3 and 11. When the IRremote library takes control of Timer2, it disables the PWM functionality on these pins. As a result, if you're using these pins for PWM, activating the IRremote library may cause these pins to stop functioning as PWM outputs. This conflict can be avoided by either changing the PWM pins or modifying the library’s timer usage.  These pins can no longer produce PWM output because the timer is now dedicated to handling IR signal decoding.  
+
+![](assets/photo_5472137954488084044_y.jpg)  
+
+The image shows the pins used by each type of microcontroller.
+
+
+## Additional Software Tip  (Reference Operator)  
+
+The *&* symbol in C++ can mean different things depending on its context. Let's break down its meanings:  
+
+**1. As a Reference Operator**  
+*Same Memory Location*: The reference shares the exact same memory location as the original variable.  
+*Two Names, One Variable*: The original variable and the reference are just two different names for the same piece of data.  
+*Synchronized Changes*: Any change made through the reference directly affects the original variable (and vice versa).  
+
+Once initialized, a reference cannot be reassigned to refer to another variable. References need to be initialized when declared. Unlike pointers, references cannot be null. Passing by reference improves performance for large data structures.  
+
+```c
+unsigned long original = 42;
+unsigned long& ref = original;  // ref is now a reference to original
+
+ref = 100;  // Changing ref also changes original
+Serial.println(original);  // Output: 100
+```  
+
+**Analogy**  
+Think of a reference as a nickname:  
+
+If value is your real name and ref is your nickname, both refer to you.  
+Whether someone calls you by your real name or nickname, it's still you who responds!  
+
+
+**2. As an Address-of Operator**  
+When & is used in front of a variable name (outside a declaration), it returns the memory address of that variable.  
+
+```c
+unsigned long value = 42;
+unsigned long* ptr = &value;  // ptr stores the address of value 
+```  
+
+&value means “give me the address of value”.  
+This is commonly used with pointers to store addresses.  
+You can dereference the pointer using *ptr to access or modify the original value.  
+
+### Benefits of using Reference Operator  
+
+**Preferred for Readable Code**  
+You can create a reference to simplify access to *IR.decodedIRData.decodedRawData*:  
+
+```c
+ unsigned long& rawData = IR.decodedIRData.decodedRawData;
+```  
+
+**Explanation**
+*unsigned long& rawData* creates a reference to IR.decodedIRData.decodedRawData.  
+You can now use rawData as a shorthand for IR.decodedIRData.decodedRawData.  
+
+Besides the Reference Operator, macros can also be used to replace variables or simplify access to values and code segments.  
+
+```c
+#define RAW_DATA IR.decodedIRData.decodedRawData
+```  
+
+Replaces all instances of RAW_DATA with IR.decodedIRData.decodedRawData during compilation.  
+
+**Caution**
+Macros don’t respect scope, so they can sometimes lead to unexpected behavior. Use references if possible for cleaner, safer code.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
