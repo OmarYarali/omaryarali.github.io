@@ -623,7 +623,11 @@ The IRremote library typically uses Timer2 on the Arduino (specifically on the A
 
 ![](assets/photo_5472137954488084044_y.jpg)  
 
-The image shows the pins used by each type of microcontroller.
+The image shows the pins used by each type of microcontroller.  
+
+## L298N Motor Driver Explained  
+
+The L298N is a dual H-bridge motor driver IC that allows you to control two DC motors or one stepper motor. It’s a versatile and widely used component for robotics and other motor control applications. 
 
 
 ## Additional Software Tip  (Reference Operator)  
@@ -673,7 +677,7 @@ You can create a reference to simplify access to *IR.decodedIRData.decodedRawDat
  unsigned long& rawData = IR.decodedIRData.decodedRawData;
 ```  
 
-**Explanation**
+**Explanation**  
 *unsigned long& rawData* creates a reference to IR.decodedIRData.decodedRawData.  
 You can now use rawData as a shorthand for IR.decodedIRData.decodedRawData.  
 
@@ -685,7 +689,7 @@ Besides the Reference Operator, macros can also be used to replace variables or 
 
 Replaces all instances of RAW_DATA with IR.decodedIRData.decodedRawData during compilation.  
 
-**Caution**
+**Caution**  
 Macros don’t respect scope, so they can sometimes lead to unexpected behavior. Use references if possible for cleaner, safer code.
 
 
