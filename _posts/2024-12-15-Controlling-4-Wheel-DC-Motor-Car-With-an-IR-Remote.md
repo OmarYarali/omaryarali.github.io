@@ -2,7 +2,7 @@
 title: Controlling 4-Wheel DC Motor Car With an IR Remote
 date: 2024-12-15 00:00:00 +0300
 categories: [IoT, Arduino]
-tags: [Embedded Project, Electronics, IR, NEC, Remote, RGB LED, DC Motor, Control, Integrated Circuit, Motor Driver, Power Supply]   
+tags: [Embedded Project, Electronics, Car, IR, NEC, Remote, DC Motor, Control, Integrated Circuit, Motor Driver, Power Supply]   
 author: yarali 
 published: true
 
@@ -53,13 +53,13 @@ IR Remote
 IR Receiver Module  
 4 DC Motors and Wheels
 Motor Driver Module (L298N)  
-4 Flyback Diode (1N4007)
+4 Flyback Diode (1N4007)  
 Resistors  
 Breadboard and Jumper Wires  
 Buzzer  
 Toggle Switch  
 Power Supply (For Motors 2 18650 3.7 V 2400mAh Li-Ion Rechargeable Battery)  
-Power Supply (For Arduino 9 V Battery via VIN Pin)
+Power Supply (For Arduino 9 V Battery via VIN Pin)  
 Download IRremote Library (4.4.1)  
 
 ## How to Download Libraries  
@@ -631,6 +631,49 @@ The image shows the pins used by each type of microcontroller.
 ## L298N Motor Driver Explained  
 
 The L298N is a dual H-bridge motor driver IC that allows you to control two DC motors or one stepper motor. It’s a versatile and widely used component for robotics and other motor control applications. 
+
+### Transistor Explained  
+
+A transistor is a semiconductor device used to amplify or switch electronic signals and electrical power. It is one of the most fundamental building blocks of modern electronic devices. Transistors are made from semiconductor materials, typically silicon or germanium, and are essential in nearly all electronic devices, from simple circuits to complex integrated circuits (ICs).  
+
+#### Types of Transistors  
+
+**Bipolar Junction Transistors (BJTs)**  
+
+A BJT is a type of transistor that relies on the flow of both majority and minority charge carriers (hence the name "bipolar") to amplify or switch electrical signals. It is one of the oldest and most widely used semiconductor devices.  
+
+**Structure of BJT**  
+A BJT has three regions:  
+
+Emitter (E): Highly doped to provide a large number of charge carriers.  
+Base (B): Thin and lightly doped, located between the emitter and collector.  
+Collector (C): Moderately doped and larger in size to handle the heat and collect charge carriers.  
+
+Composed of three layers of doped semiconductor material. It has 2 types:  
+NPN: Made of two n-type materials separated by a p-type material.  
+PNP: Made of two p-type materials separated by an n-type material.  
+Operates using both electrons and holes as charge carriers. Current flows between collector and emitter, controlled by the base current.  
+
+![](assets/maxresdefault.jpg)  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Additional Software Tip  (Reference Operator)  
