@@ -710,7 +710,7 @@ If we connect a battery across the Base and Emitter, with the positive terminal 
 
 However, as we said, because the Base is very thin and lightly doped, only a small Base current flows out of the Base pin, as most electrons from the Emitter do not recombine with holes in the Base. This leaves an excess of electrons in the P-type Base material, which are then attracted toward the Collector due to its higher voltage.  
 
-To explain it more clearly, If we then connect another battery between the Emitter and the Collector, with the positive terminal connected to the Collector, the negatively charged electrons in the Collector will be attracted toward the positive terminal of this battery, creating a reverse bias across the Collector-Base junction. In a reverse-biased junction, electrons and holes are pulled back to their respective regions, widening the depletion region and preventing current flow under normal conditions. However, in an NPN transistor, there is already an excess of electrons in the lightly doped P-type Base due to the forward bias of the Base-Emitter junction.  
+To explain it more clearly, if we then connect another battery between the Emitter and the Collector, with the positive terminal connected to the Collector, the negatively charged electrons in the Collector will be attracted toward the positive terminal of this battery, creating a reverse bias across the Collector-Base junction. In a reverse-biased junction, electrons and holes are pulled back to their respective regions, widening the depletion region and preventing current flow under normal conditions. However, in an NPN transistor, there is already an excess of electrons in the lightly doped P-type Base due to the forward bias of the Base-Emitter junction.  
 
 Since the Collector-Base voltage is higher, these excess electrons in the Base are strongly attracted toward the Collector. Many of them are pulled across the Collector-Base junction and into the Collector, continuing their flow into the battery’s positive terminal. As more electrons are drawn across, a large current flows from the Collector to the Emitter, allowing the transistor to act as a current amplifier or a switch. This is how a small Base current can control a much larger Collector-Emitter current, making the transistor a powerful electronic component.  
 
@@ -721,6 +721,20 @@ A higher voltage on the Base pin increases the Base current, which further reduc
 Since the Collector-Base junction is reverse biased, as more electrons enter the Base (due to the increased Base voltage), most of these electrons do not recombine in the Base but are instead pulled across the Collector-Base junction due to the strong electric field. This results in an increase in the Collector current (𝐼𝐶), meaning the transistor is fully turned on, allowing maximum current flow from Collector to Emitter. So if we increase the base current the collector current will increase proportionally.  
 
 ![](assets/Screenshot 2025-01-30 014134.png)  
+
+*Note* : The voltage across a component is simply the difference between its terminals, even if different supplies exist. The voltage drop created by the 0.7V power supply on the transistor still affects the main circuit’s calculations, even though the 9V supply is different. 
+
+![](assets/Screenshot 2025-01-31 195621.png)  
+
+**Why Does This Happen?**  
+Voltages are always relative to a reference point (usually ground). A voltage drop means a potential difference between two points, and Kirchhoff’s Voltage Law (KVL) still applies (the total voltage supplied must equal the sum of all voltage drops), even if different power supplies exist. If the two supplies share a common ground, then they interact electrically, affecting the same circuit.  
+
+**How PNP Transistor Works?**  
+For a PNP transistor, instead of needing a minimum of 0.7V on the base (as in an NPN transistor), the transistor requires a minimum voltage difference of 0.7V between the V_CE (collector-emitter voltage) and the V_BE (base-emitter voltage) to turn on. The base-emitter voltage (V_BE) must be at least 0.7V lower than the emitter voltage for the transistor to turn on and allow current to flow from the emitter to collector. If V_BE is 8.6V, the voltage difference is only 0.4V (less than 0.7V), meaning the transistor remains off, and no current flows. If V_BE is 7V, the difference is 2V (greater than 0.7V), so the transistor turns on, and current flows.  
+
+![](assets/Screenshot 2025-01-31 202043.png)  
+
+
 
 
 
