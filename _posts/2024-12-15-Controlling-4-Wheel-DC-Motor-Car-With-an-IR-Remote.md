@@ -734,6 +734,57 @@ For a PNP transistor, instead of needing a minimum of 0.7V on the base (as in an
 
 ![](assets/Screenshot 2025-01-31 202043.png)  
 
+### Operating Regions of a Transistor  
+
+*If 𝑉𝐵𝐸 (the base-emitter voltage) is less than 0.7V, what happens?*  
+
+From the input characteristics of the transistor, we know that when 𝑉𝐵𝐸 is below 0.7V, the base-emitter junction is not properly forward-biased. As a result, the depletion region remains wide, preventing significant electron injection into the base. Consequently:  
+The base current (𝐼𝐵) is nearly zero.  
+Since very few electrons enter the base, the collector current (𝐼𝐶​) is also nearly zero.  
+
+Because the collector current is zero, there is no voltage drop across the collector resistor (Ohm’s Law: 𝑉=𝐼𝑅). This means the collector voltage remains equal to the supply voltage. In this state, the transistor is not conducting any current. Since both 𝐼𝐵 and 𝐼𝐶 are negligible, the transistor is said to be in the cutoff region (or cutoff mode), meaning it is effectively switched off.  
+
+**Cut-off Region**  
+The cutoff region in a transistor refers to the state where the transistor is effectively turned off and there is no significant current flow between the collector and emitter (for BJTs) or drain and source (for FETs). This happens when the transistor's input(base) voltage is too low to turn it on. The transistor blocks current from the Collector to the Emitter, acting like an open switch. 𝑉𝐵𝐸 is near 0V (no current flowing).  
+
+
+
+
+
+
+
+
+
+
+
+
+There is another scenario to consider. This occurs when the base current exceeds a certain threshold. When the base current goes beyond a critical limit, the collector current reaches its maximum possible value and cannot increase further. Even if we try to further increase the base current, the collector current remains capped — it simply cannot increase any further. Since the collector current has reached its maximum, the voltage drop across the collector resistor increases. As a result, the collector-emitter voltage drops to its minimum possible value, close to zero. This state, where the collector current is fully saturated, is called the saturation region of the transistor.   
+
+**Saturation Region**  
+In Saturation Region, transistor is fully ON (acts as a closed switch). The collector current (IC) is at its maximum possible value, determined by the circuit components. The collector-emitter voltage (VCE) drops to a small value (usually around 0.1V to 0.3V for silicon BJTs). Saturation mode is mainly used when a transistor functions as a switch in digital circuits.  
+
+![](assets/Screenshot 2025-02-03 232647.png)  
+
+
+
+**Active Region**  
+When the base current is greater than zero but does not exceed a certain threshold (e.g., a specific microampere value), the transistor operates in the active region.  
+ 
+![](assets/Screenshot 2025-02-04 005713.png)  
+
+The collector-emitter voltage (V_CE) varies between its maximum and minimum values. This allows the transistor to amplify signals. The active region is also known as the linear region because the collector current changes linearly with the base current. In this state, the transistor performs as an amplifier, operating as intended.  
+
+![](assets/Screenshot 2025-02-03 233235.png)  
+
+
+ 
+
+
+
+ 
+
+
+
 
 
 
