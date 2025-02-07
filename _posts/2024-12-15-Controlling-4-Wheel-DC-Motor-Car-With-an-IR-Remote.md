@@ -774,8 +774,6 @@ When the base current is greater than zero but does not exceed a certain thresho
 
 The collector-emitter voltage (V_CE) varies between its maximum and minimum values. This allows the transistor to amplify signals. The active region is also known as the linear region because the collector current changes linearly with the base current. In this state, the transistor performs as an amplifier, operating as intended.  
 
-![](assets/Screenshot 2025-02-03 233235.png)  
-
 **Understanding Active Region**  
 Base-Emitter Junction (V_BE) is Forward Biased (~0.7V for Silicon BJTs). This voltage remains approximately constant as long as the transistor stays in the active region. Small changes in 
 𝑉𝐵𝐸 result in exponential changes in base current (𝐼𝐵) due to the diode equation.  
