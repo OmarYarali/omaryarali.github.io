@@ -776,6 +776,24 @@ The collector-emitter voltage (V_CE) varies between its maximum and minimum valu
 
 ![](assets/Screenshot 2025-02-03 233235.png)  
 
+**Understanding Active Region**  
+Base-Emitter Junction (V_BE) is Forward Biased (~0.7V for Silicon BJTs). This voltage remains approximately constant as long as the transistor stays in the active region. Small changes in 
+𝑉𝐵𝐸 result in exponential changes in base current (𝐼𝐵) due to the diode equation.  
+
+![](assets/Screenshot 2025-02-05 204047.png)  
+
+Base current controls Collector current.  
+
+![](assets/Screenshot 2025-02-05 204345.png)  
+
+Ideally, 𝐼𝐶 should only depend on 𝐼𝐵, but in reality, a small dependency exists on 𝑉𝐶𝐸. This effect is called the Early Effect (or base-width modulation). As 𝑉𝐶𝐸 increases, the depletion region at the collector-base junction widens, reducing the effective base width and slightly increasing 𝐼𝐶.  This is because a narrower base allows for more efficient charge carrier transport from the emitter to the collector, reducing recombination of charge carriers in the base. As a result, more electrons or holes (depending on the type of transistor) reach the collector, increasing the collector current (IC).  
+
+This is why in the output characteristic curve (𝐼𝐶 vs 𝑉𝐶𝐸), the lines are not perfectly horizontal but have a slight upward slope.  
+![]() 
+
+​
+ 
+
 
  
 
