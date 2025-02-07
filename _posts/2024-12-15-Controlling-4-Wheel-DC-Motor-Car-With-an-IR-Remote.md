@@ -787,7 +787,7 @@ Base current controls Collector current.
 Ideally, 𝐼𝐶 should only depend on 𝐼𝐵, but in reality, a small dependency exists on 𝑉𝐶𝐸. This effect is called the Early Effect (or base-width modulation). As 𝑉𝐶𝐸 increases, the depletion region at the collector-base junction widens, reducing the effective base width and slightly increasing 𝐼𝐶.  This is because a narrower base allows for more efficient charge carrier transport from the emitter to the collector, reducing recombination of charge carriers in the base. As a result, more electrons or holes (depending on the type of transistor) reach the collector, increasing the collector current (IC).  
 
 This is why in the output characteristic curve (𝐼𝐶 vs 𝑉𝐶𝐸), the lines are not perfectly horizontal but have a slight upward slope.  
-![]() 
+
 
 ​
  
